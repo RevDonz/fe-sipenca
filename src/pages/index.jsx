@@ -7,7 +7,7 @@ const Home = () => {
     <>
       <Navbar />
       <div className='bg-white'>
-        <div className='flex flex-col md:flex-row mx-auto w-[90%] max-w-screen-xl'>
+        <div className='flex flex-col md:flex-row mx-auto w-[90%] max-w-screen-xl min-h-screen  '>
           <div className='flex w-full flex-col justify-center md:w-1/2'>
             <h1 className='text-3xl font-bold text-[#254A75]'>
               Bersama Sipenca

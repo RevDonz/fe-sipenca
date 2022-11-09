@@ -4,7 +4,7 @@ import React from 'react';
 
 const Navbar = () => {
   return (
-    <div className='w-full sticky top-0 z-50'>
+    <div className='w-full fixed top-0 z-50'>
       <div className='bg-white'>
         <div className='h-16 flex items-center justify-between mx-auto w-[90%] max-w-screen-xl'>
           <div className=''>

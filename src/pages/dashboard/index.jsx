@@ -6,8 +6,8 @@ const Dashboard = () => {
   return (
     <div>
       <Navbar />
-      <div className='py-10 bg-[#EFF0F2]'>
-        <div className='flex mx-auto w-[90%] max-w-screen-xl gap-5'>
+      <div className='bg-[#EFF0F2]'>
+        <div className='flex mx-auto w-[90%] max-w-screen-xl gap-5 py-10 pt-20 min-h-screen'>
           <div className='w-1/3 bg-white p-5 rounded-lg'>
             <div className='flex items-center gap-3'>
               <svg
@@ -83,7 +83,9 @@ const Dashboard = () => {
             </div>
           </div>
           <div className='w-2/3 bg-white p-5 rounded-lg'>
-            <p>asd</p>
+            <div className="">
+              <h3 className='font-semibold'>Profil</h3>
+            </div>
           </div>
         </div>
       </div>
