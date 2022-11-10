@@ -83,7 +83,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className='w-2/3 bg-white p-5 rounded-lg'>
-            <div className="">
+            <div className=''>
               <h3 className='font-semibold'>Profil</h3>
             </div>
           </div>
