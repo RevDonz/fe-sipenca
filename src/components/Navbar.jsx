@@ -27,9 +27,6 @@ const Navbar = () => {
             <div className='rounded-md px-3 py-2 text-[#254A75] transition hover:bg-[#254A75] hover:text-white'>
               Tentang
             </div>
-            <div className='rounded-md px-3 py-2 text-[#254A75] transition hover:bg-[#254A75] hover:text-white'>
-              Keluarga
-            </div>
             <Link href={'/dashboard'}>
               <button
                 href='404.html'
