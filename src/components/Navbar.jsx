@@ -1,11 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import useWindowScroll from '../lib/useWindowScroll';
 
 const Navbar = () => {
+  const scrollPos = useWindowScroll();
+
   return (
     <div className='w-full fixed top-0 z-50'>
-      <div className='bg-white'>
+      <div className={`bg-white transition ${scrollPos > 50 ? 'shadow-md' : ''}`}>
         <div className='h-16 flex items-center justify-between mx-auto w-[90%] max-w-screen-xl'>
           <Link href={'/'}>
             <Image
