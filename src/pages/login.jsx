@@ -15,14 +15,14 @@ const LoginPage = () => {
         <h1 className='text-center font-medium text-xl mt-4'>LOGIN</h1>
 
         <div>
-          <input type="email" name="email" id="email" className='bg-gray-200 rounded-md mt-3 w-full px-3 py-2' placeholder='Email or Username'/>
+          <input type="email" name="email" id="email" className='bg-gray-200 rounded-md mt-3 w-full px-3 py-2' placeholder='Username'/>
         </div>
 
         <div>
           <input type="password" name="email" id="email" className='bg-gray-200 rounded-md mt-3 w-full px-3 py-2' placeholder='Password'/>
         </div>
         
-        <button type="submit" className=' text-white font-bold py-2 px-4 rounded-md bg-[#51557E] hover:bg-[#9499CA] hover:text-[#51557E] mt-8 w-full'  >Login</button>
+        <button type="submit" className=' text-white font-bold py-2 px-4 rounded-md bg-[#51557E] hover:bg-[#34375a] mt-8 w-full'  >Login</button>
 
         <p className='text-sm font-normal text-center mt-3 w-full px-3 py-2'>Belum punya akun?
         <a href="#" className='font-semibold text-sm hover:underline ml-1 text-[#51557E] '>Register</a>
@@ -32,5 +32,6 @@ const LoginPage = () => {
     </div>
   )
 }
+
 
 export default LoginPage
