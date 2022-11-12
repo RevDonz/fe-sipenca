@@ -1,4 +1,15 @@
-export const menu = [
+export const NavbarMenu = [
+  {
+    url: '/',
+    menu: 'Beranda',
+  },
+  {
+    url: '#tentang',
+    menu: 'Tentang',
+  },
+];
+
+export const SidebarMenu = [
   {
     url: '/',
     menu: 'Pengungsian',
