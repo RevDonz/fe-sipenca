@@ -1,10 +1,14 @@
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import HeroImage from '../../public/hero.jpg';
+import Head from 'next/head';
 
 const Home = () => {
   return (
     <>
+      <Head>
+        <title>Sipenca | Aplikasi Penanganan Bencana</title>
+      </Head>
       <Navbar />
       <div className='bg-white'>
         <div className='flex flex-col md:flex-row mx-auto w-[90%] max-w-screen-xl min-h-screen  '>
