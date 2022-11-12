@@ -22,7 +22,7 @@ const LoginPage = () => {
           <input type="password" name="email" id="email" className='bg-gray-200 rounded-md mt-3 w-full px-3 py-2' placeholder='Password'/>
         </div>
         
-        <button type="submit" className=' text-white font-bold py-2 px-4 rounded-md bg-[#51557E] hover:bg-[#9499CA] hover:text-[#51557E] mt-8 w-full px-3 py-2'  >Login</button>
+        <button type="submit" className=' text-white font-bold py-2 px-4 rounded-md bg-[#51557E] hover:bg-[#9499CA] hover:text-[#51557E] mt-8 w-full'  >Login</button>
 
         <p className='text-sm font-normal text-center mt-3 w-full px-3 py-2'>Belum punya akun?
         <a href="#" className='font-semibold text-sm hover:underline ml-1 text-[#51557E] '>Register</a>
