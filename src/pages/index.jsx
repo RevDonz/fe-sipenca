@@ -1,7 +1,8 @@
-import Image from 'next/image';
-import Navbar from '../components/Navbar';
-import HeroImage from '../../public/hero.jpg';
 import Head from 'next/head';
+import Image from 'next/image';
+import HeroImage from '../../public/hero.jpg';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 
 const Home = () => {
   return (
@@ -10,41 +11,37 @@ const Home = () => {
         <title>Sipenca | Aplikasi Penanganan Bencana</title>
       </Head>
       <Navbar />
+
       <div className='bg-white'>
-        <div className='flex flex-col md:flex-row mx-auto w-[90%] max-w-screen-xl min-h-screen  '>
+        <div className='flex flex-col items-center justify-center md:flex-row mx-auto w-[90%] max-w-screen-xl h-screen'>
           <div className='flex w-full flex-col justify-center md:w-1/2'>
-            <h1 className='text-3xl font-bold text-[#254A75]'>
+            <h1 className='text-2xl md:text-3xl xl:text-4xl font-bold text-[#254A75]'>
               Bersama Sipenca
             </h1>
-            <h2 className='text-2xl font-bold text-[#254A75]'>
+            <h2 className='text-xl md:text-2xl xl:text-3xl font-bold text-[#254A75]'>
               Kita Siap Membantu Keluarga
             </h2>
-            <p className='mt-3 font-medium text-[#254A75]'>
+            <p className='mt-3 font-medium xl:text-lg text-[#254A75]'>
               Solusi untuk mencari lokasi pengungsian dengan mudah dan nyaman
             </p>
             <div className=''>
-              <button className='px-6 py-3 bg-[#254A75] text-white rounded-md mt-5'>
+              <button className='px-4 py-2 md:px-6 md:py-3 bg-[#254A75] text-white rounded-md mt-5'>
                 Cari Pengungsian
               </button>
             </div>
           </div>
           <div className='w-full md:w-1/2 flex justify-center items-center'>
-            <Image
-              src={HeroImage}
-              alt='hero image'
-              priority
-              // width={500}
-              // height={300}
-            />
+            <Image src={HeroImage} alt='hero image' priority />
           </div>
         </div>
       </div>
+
       <div className='bg-[#E1EBF3]'>
         <div className='flex flex-col items-center justify-center py-10 mx-auto w-[90%] max-w-screen-xl'>
-          <h2 className='text-xl font-bold text-[#254A75]'>
+          <h2 className='text-xl md:text-2xl font-bold text-[#254A75]'>
             Temukan Tempat Pengungsian Terdekat
           </h2>
-          <div className='mt-5 flex h-12 w-1/2 items-center gap-3 rounded-md bg-white px-3 shadow-md'>
+          <div className='mt-5 flex h-12 w-full md:w-3/4 lg:w-1/2 items-center gap-3 rounded-md bg-white px-3 shadow-md'>
             <div className='flex w-full items-center gap-3'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -71,14 +68,13 @@ const Home = () => {
         </div>
       </div>
       <div className='bg-white'>
-        <div className='flex py-10 mx-auto w-[90%] max-w-screen-xl'>
-          <div className='w-1/3'>
-            <p>Tentang</p>
-            <h2 className='text-2xl font-bold text-[#254A75]'>
+        <div className='flex flex-col md:flex-row py-10 mx-auto w-[90%] max-w-screen-xl'>
+          <div className='w-full md:w-1/3'>
+            <h2 className='text-xl md:text-2xl font-bold text-[#254A75] md:text-left text-center'>
               Apa itu Sipenca?
             </h2>
           </div>
-          <div className='w-2/3 space-y-3'>
+          <div className='w-full md:w-2/3 space-y-3 mt-5 md:mt-0'>
             <p>
               SIPENCA merupakan aplikasi yang dikembangkan untuk membantu warga
               melihat lokasi - lokasi pengungsian pada saat terjadinya bencana
@@ -97,23 +93,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className='bg-[#254A75]'>
-        <div className='flex items-center justify-between py-5 mx-auto w-[90%] max-w-screen-xl'>
-          <div className='flex gap-5 items-center'>
-            <Image
-              src={'/logo/logo-sipenca-white.svg'}
-              alt='logo-sipenca'
-              width={40}
-              height={40}
-            />
-            <p className='text-white'>Copyright © 2022 - All right reserved</p>
-          </div>
-          <div className='flex gap-3'>
-            <p className='text-white'>@twitter</p>
-            <p className='text-white'>@instagram</p>
-          </div>
-        </div>
-      </div>
+      <Footer />
     </>
   );
 };
