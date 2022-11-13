@@ -6,10 +6,13 @@ const Layout = ({ children, title }) => {
   return (
     <div>
       <Navbar />
+
       <div className='bg-[#EFF0F2]'>
         <div className='flex mx-auto w-[90%] max-w-screen-xl gap-5 py-10 pt-20 min-h-screen'>
-          <Sidebar />
-          <div className='w-2/3 bg-white rounded-lg'>
+          <div className='w-1/3 hidden md:block'>
+            <Sidebar />
+          </div>
+          <div className='w-full md:w-2/3 bg-white rounded-lg'>
             <div className='p-5 border-b-2'>
               <h3 className='font-semibold text-2xl'>{title}</h3>
             </div>

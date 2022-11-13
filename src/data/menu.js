@@ -1,7 +1,20 @@
-export const menu = [
+import { HiOutlineUser } from 'react-icons/hi2';
+
+export const NavbarMenu = [
   {
     url: '/',
-    menu: 'Pengungsian',
+    menu: 'Beranda',
+  },
+  {
+    url: '#tentang',
+    menu: 'Tentang',
+  },
+];
+
+export const SidebarMenu = [
+  {
+    url: '/',
+    link: 'Pengungsian',
   },
   {
     url: '/keluarga',
