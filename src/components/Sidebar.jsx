@@ -23,7 +23,7 @@ const Sidebar = () => {
           <div
             className={`p-3 rounded-md flex items-center gap-3 ${
               urlName == '/dashboard'
-                ? 'bg-[#307DD1] text-white'
+                ? 'bg-[#254A75] text-white'
                 : 'hover:bg-gray-100 text-[#254A75] '
             }`}
           >
@@ -35,7 +35,7 @@ const Sidebar = () => {
           <div
             className={`p-3 rounded-md flex items-center gap-3 ${
               urlName == '/dashboard/keluarga'
-                ? 'bg-[#307DD1] text-white'
+                ? 'bg-[#254A75] text-white'
                 : 'hover:bg-gray-100 text-[#254A75]'
             }`}
           >
@@ -47,7 +47,7 @@ const Sidebar = () => {
           <div
             className={`p-3 rounded-md flex items-center gap-3 ${
               urlName == '/dashboard/pengungsian'
-                ? 'bg-[#307DD1] text-white'
+                ? 'bg-[#254A75] text-white'
                 : 'hover:bg-gray-100 text-[#254A75]'
             }`}
           >
