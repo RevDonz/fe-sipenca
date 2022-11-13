@@ -43,6 +43,7 @@ const Dashboard = () => {
         <button className='px-3 py-2 rounded-md border border-[#307DD1] mt-5 hover:bg-[#307DD1] transition hover:text-white'>
           Update Profile
         </button>
+        
       </div>
     </Layout>
   );

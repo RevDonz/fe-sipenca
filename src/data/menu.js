@@ -1,3 +1,5 @@
+import { HiOutlineUser } from 'react-icons/hi2';
+
 export const NavbarMenu = [
   {
     url: '/',
@@ -12,7 +14,7 @@ export const NavbarMenu = [
 export const SidebarMenu = [
   {
     url: '/',
-    menu: 'Pengungsian',
+    link: 'Pengungsian',
   },
   {
     url: '/keluarga',
