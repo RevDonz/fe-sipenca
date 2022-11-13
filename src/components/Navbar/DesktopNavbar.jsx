@@ -36,11 +36,11 @@ const DesktopNavbar = () => {
           </Scroll>
           {urlName == '/dashboard' ||
           urlName == '/dashboard/keluarga' ||
-          urlName == '/dashboard/pengungsian' ? (
+          urlName == '/dashboard/profil' ? (
             <div class='relative'>
               {urlName == '/dashboard' ||
               urlName == '/dashboard/keluarga' ||
-              urlName == '/dashboard/pengungsian' ? (
+              urlName == '/dashboard/profil' ? (
                 <button
                   class='flex items-center rounded border border-[#254A75] px-3 py-2 gap-1 text-[#254A75] hover:bg-gray-100 focus:outline-none'
                   onClick={() => setShow(!show)}

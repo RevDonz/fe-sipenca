@@ -24,6 +24,18 @@ const Sidebar = () => {
             className={`p-3 rounded-md flex items-center gap-3 ${
               urlName == '/dashboard'
                 ? 'bg-[#254A75] text-white'
+                : 'hover:bg-gray-100 text-[#254A75]'
+            }`}
+          >
+            <GiCampingTent className='stroke-[1.5px] w-6 h-6' />
+            <p className='font-semibold'>Pengungsian</p>
+          </div>
+        </Link>
+        <Link href={'/dashboard/profil'}>
+          <div
+            className={`p-3 rounded-md flex items-center gap-3 ${
+              urlName == '/dashboard/profil'
+                ? 'bg-[#254A75] text-white'
                 : 'hover:bg-gray-100 text-[#254A75] '
             }`}
           >
@@ -41,18 +53,6 @@ const Sidebar = () => {
           >
             <HiOutlineUserGroup className='stroke-[1.5px] w-6 h-6' />
             <p className='font-semibold'>Keluarga</p>
-          </div>
-        </Link>
-        <Link href={'/dashboard/pengungsian'}>
-          <div
-            className={`p-3 rounded-md flex items-center gap-3 ${
-              urlName == '/dashboard/pengungsian'
-                ? 'bg-[#254A75] text-white'
-                : 'hover:bg-gray-100 text-[#254A75]'
-            }`}
-          >
-            <GiCampingTent className='stroke-[1.5px] w-6 h-6' />
-            <p className='font-semibold'>Pengungsian</p>
           </div>
         </Link>
       </div>
