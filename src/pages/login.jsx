@@ -1,5 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
+import { HiInbox, HiLockClosed } from 'react-icons/hi2';
 
 const LoginPage = () => {
   return (
@@ -14,42 +16,52 @@ const LoginPage = () => {
         />
         <h1 className='text-center font-medium text-xl mt-4'>LOGIN</h1>
 
-        <div>
+        <div className='bg-gray-200 rounded-md mt-2 w-full px-3 py-2 focus-within:ring-2 focus-within:ring-[#51557E]'>
+          <div className='absolute pointer-events-none'>
+            <HiInbox className='h-5 w-5 text-gray-500' />
+          </div>
+
           <input
-            type='email'
-            name='email'
-            id='email'
-            className='bg-gray-200 rounded-md mt-3 w-full px-3 py-2'
-            placeholder='Email or Username'
+            type='text'
+            name='text'
+            id='text'
+            className='w-full pl-10 bg-gray-200 focus:outline-none'
+            placeholder='Username'
           />
         </div>
 
-        <div>
+        <div className='bg-gray-200 rounded-md mt-2 w-full px-3 py-2 focus-within:ring-2 focus-within:ring-[#51557E]'>
+          <div className='absolute pointer-events-none'>
+            <HiLockClosed className='h-5 w-5 text-gray-500' />
+          </div>
+
           <input
             type='password'
-            name='email'
-            id='email'
-            className='bg-gray-200 rounded-md mt-3 w-full px-3 py-2'
+            name='password'
+            id='password'
+            className='w-full pl-10 bg-gray-200 focus:outline-none'
             placeholder='Password'
           />
         </div>
 
-        <button
-          type='submit'
-          className=' text-white font-bold py-2 px-4 rounded-md bg-[#51557E] hover:bg-[#9499CA] hover:text-[#51557E] mt-8 w-full'
-        >
-          Login
-        </button>
+        <Link href='/dashboard'>
+          <button
+            type='submit'
+            className=' text-white font-bold py-2 px-4 rounded-md bg-[#51557E] hover:bg-[#34375a] mt-8 w-full'
+          >
+            Login
+          </button>
+        </Link>
 
-        <p className='text-sm font-normal text-center mt-3 w-full px-3 py-2'>
+        <div className='text-sm font-normal text-center mt-3 w-full px-3 py-2'>
           Belum punya akun?
-          <a
-            href='#'
-            className='font-semibold text-sm hover:underline ml-1 text-[#51557E] '
+          <Link
+            href='/register'
+            class='text-blue-700 hover:underline dark:text-blue-500 ml-1'
           >
             Register
-          </a>
-        </p>
+          </Link>
+        </div>
       </div>
     </div>
   );
