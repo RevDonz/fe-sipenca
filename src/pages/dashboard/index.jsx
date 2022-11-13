@@ -1,51 +1,45 @@
-import React from 'react';
-import Layout from '../../components/Layout';
+import React, { Children } from 'react'
+import Layout from '../../components/Layout'
 
-const Dashboard = () => {
+const PengungsianWarga = () => {
   return (
-    <Layout title={'Profile'}>
-      <div className='p-5'>
-        <div className='space-y-5'>
-          <div className='flex flex-col gap-3'>
-            <label htmlFor='nama' className='font-medium'>
-              Nama
-            </label>
-            <input
-              type='text'
-              id='nama'
-              value={'Warga 1'}
-              className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
-            />
-          </div>
-          <div className='flex flex-col gap-3'>
-            <label htmlFor='alamat' className='font-medium'>
-              Alamat
-            </label>
-            <input
-              type='text'
-              id='alamat'
-              value={'Bandung'}
-              className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
-            />
-          </div>
-          <div className='flex flex-col gap-3'>
-            <label htmlFor='notelp' className='font-medium'>
-              No Telepon
-            </label>
-            <input
-              type='text'
-              id='notelp'
-              value={'089123456789'}
-              className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
-            />
-          </div>
+    <Layout title={"Pengungsian"}>
+      <div className='bg-[#FFFFFF] p-10 pt-12'>
+        <div className='bg-[#EFF0F2] overflow-x-auto relative mx-auto max-w-screen-xl rounded-lg p-5'>
+          <table className='table-auto text-[#254A75] text-left p-4'>
+            <thead className='border-b-2'>
+              <tr>
+                <th className='p-5'></th>
+                <th className='p-5'>Nama</th>
+                <th className='p-5'>Alamat</th>
+                <th className='p-5'>Kapasitas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className='border-b-2'>
+                <td className='p-5'>
+                  <button type='button' className='rounded-md px-3 py-2 bg-[#254A75] text-white'>Join</button>
+                </td>
+                <td className='p-5'>Pengungsian 1</td>
+                <td className='p-5'>Jl. Mawar no 04,
+                  Kota Bandung, Jawa Barat</td>
+                <td className='p-5'>17/20</td>
+              </tr>
+              <tr className='border-b-2'>
+                <td className='p-5'>
+                  <button type='button' className='rounded-md px-3 py-2 bg-[#254A75] text-white'>Join</button>
+                </td>
+                <td className='p-5'>Pengungsian 2</td>
+                <td className='p-5'>Jl. Mawar no 04,
+                  Kota Bandung, Jawa Barat</td>
+                <td className='p-5'>20/20</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <button className='px-3 py-2 rounded-md border border-[#307DD1] mt-5 hover:bg-[#307DD1] transition hover:text-white'>
-          Update Profile
-        </button>
       </div>
     </Layout>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default PengungsianWarga
