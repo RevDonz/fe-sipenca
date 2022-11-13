@@ -15,7 +15,7 @@ const Register = () => {
           height={100}
           className="mx-auto my-3"
         />
-        <h1 className="font-bold text-center text-xl">Register</h1>
+        <h1 className="font-medium text-center text-xl mt-4">REGISTER</h1>
 
         {/*inputbox email*/}
         <div className="bg-gray-200 rounded-md mt-2 w-full px-3 py-2 focus-within:ring-2 focus-within:ring-[#51557E]">
@@ -72,12 +72,14 @@ const Register = () => {
           </button>
         </div>
 
-        <button
-          type="submit"
-          className="w-full bg-[#51557E] px-2 py-2 rounded-md mt-[40px] text-white"
-        >
-          Register
-        </button>
+        <Link href="/login">
+          <button
+            type="submit"
+            className="w-full bg-[#51557E] px-2 py-2 rounded-md mt-[40px] text-white"
+          >
+            Register
+          </button>
+        </Link>
 
         <div class="mt-2 text-center">
           Sudah punya akun?
