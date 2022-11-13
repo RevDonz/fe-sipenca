@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import Layout from '../../components/Layout';
 
@@ -54,18 +55,22 @@ const FormKeluarga = () => {
             />
           </div>
           <div class='flex items-center justify-between'>
-            <button
-              class='bg-gray-100 hover:bg-gray-300 text-blue-500 font-bold py-2 px-6 rounded border border-blue-300 focus:outline-none focus:shadow-outline'
-              type='button'
-            >
-              Batal
-            </button>
-            <button
-              class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline'
-              type='button'
-            >
-              Simpan
-            </button>
+            <Link href={'/dashboard/keluarga'}>
+              <button
+                class='bg-gray-100 hover:bg-gray-300 text-blue-500 font-bold py-2 px-6 rounded border border-blue-300 focus:outline-none focus:shadow-outline'
+                type='button'
+              >
+                Batal
+              </button>
+            </Link>
+            <Link href={'/dashboard/keluarga'}>
+              <button
+                class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline'
+                type='button'
+              >
+                Simpan
+              </button>
+            </Link>
           </div>
         </form>
       </div>
