@@ -13,7 +13,7 @@ const Home = () => {
       </Head>
       <Navbar />
 
-      <div className='bg-white'>
+      <div className='bg-white' id='beranda'>
         <div className='flex flex-col items-center justify-center md:flex-row mx-auto w-[90%] max-w-screen-xl h-screen'>
           <div className='flex w-full flex-col justify-center md:w-1/2'>
             <h1 className='text-2xl md:text-3xl xl:text-4xl font-bold text-[#254A75]'>
@@ -68,7 +68,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className='bg-white'>
+      <div className='bg-white' id='tentang'>
         <div className='flex flex-col md:flex-row py-10 mx-auto w-[90%] max-w-screen-xl'>
           <div className='w-full md:w-1/3'>
             <h2 className='text-xl md:text-2xl font-bold text-[#254A75] md:text-left text-center'>
