@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Input } from "postcss";
 import React from "react";
 import { HiInbox, HiLockClosed, HiUser } from "react-icons/hi2";
 
@@ -15,7 +14,7 @@ const Register = () => {
           height={100}
           className="mx-auto my-3"
         />
-        <h1 className="font-bold text-center text-xl">Register</h1>
+        <h1 className="font-medium text-center text-xl mt-4">REGISTER</h1>
 
         {/*inputbox email*/}
         <div className="bg-gray-200 rounded-md mt-2 w-full px-3 py-2 focus-within:ring-2 focus-within:ring-[#51557E]">
@@ -54,30 +53,31 @@ const Register = () => {
           />
         </div>
 
-        {/*inputbox role*/}
+        {/*inputan role*/}
         <div className="bg-gray-200 rounded-md mt-2 w-full px-3 py-2 focus-within:ring-2 focus-within:ring-[#51557E]">
-          {" "}
-          {/*container input role*/}
           <div className="absolute pointer-events-none">
-            {" "}
-            {/*icon role */}
             <HiUser className="h-6 w-6 text-gray-500" />
           </div>
-          <button
-            id="dropdownDefault"
-            data-dropdown-toggle="dropdown"
-            className="w-full text-gray-400 text-left pl-10 focus"
+          <select
+            name="role"
+            id="role"
+            class="w-full bg-gray-200 rounded-md pl-9 text-gray-400"
           >
-            Role
-          </button>
+            <option selected>Role</option>
+            <option value="Warga">Warga</option>
+            <option value="Pengelola">Pengelola</option>
+            <option value="Sukarelawan">Sukarelawan</option>
+          </select>
         </div>
 
-        <button
-          type="submit"
-          className="w-full bg-[#51557E] px-2 py-2 rounded-md mt-[40px] text-white"
-        >
-          Register
-        </button>
+        <Link href="/login">
+          <button
+            type="submit"
+            className="w-full bg-[#51557E] px-2 py-2 rounded-md mt-[40px] text-white"
+          >
+            Register
+          </button>
+        </Link>
 
         <div class="mt-2 text-center">
           Sudah punya akun?

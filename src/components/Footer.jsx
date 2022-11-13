@@ -4,7 +4,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <div className='bg-[#254A75]'>
-      <div className='flex items-center justify-between py-5 mx-auto w-[90%] max-w-screen-xl'>
+      <div className='flex flex-col md:flex-row items-center justify-between py-5 mx-auto w-[90%] max-w-screen-xl'>
         <div className='flex gap-5 items-center'>
           <Image
             src={'/logo/logo-sipenca-white.svg'}
