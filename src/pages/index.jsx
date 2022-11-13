@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import { Link } from 'react-scroll';
 import HeroImage from '../../public/hero.jpg';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
@@ -24,11 +25,11 @@ const Home = () => {
             <p className='mt-3 font-medium xl:text-lg text-[#254A75]'>
               Solusi untuk mencari lokasi pengungsian dengan mudah dan nyaman
             </p>
-            <div className=''>
+            <Link to='pengungsian' spy smooth>
               <button className='px-4 py-2 md:px-6 md:py-3 bg-[#254A75] text-white rounded-md mt-5'>
                 Cari Pengungsian
               </button>
-            </div>
+            </Link>
           </div>
           <div className='w-full md:w-1/2 flex justify-center items-center'>
             <Image src={HeroImage} alt='hero image' priority />
@@ -36,7 +37,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className='bg-[#E1EBF3]'>
+      <div className='bg-[#E1EBF3]' id='pengungsian'>
         <div className='flex flex-col items-center justify-center py-10 mx-auto w-[90%] max-w-screen-xl'>
           <h2 className='text-xl md:text-2xl font-bold text-[#254A75]'>
             Temukan Tempat Pengungsian Terdekat
