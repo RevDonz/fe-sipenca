@@ -23,7 +23,7 @@ const MobileNavbar = () => {
           />
         </Link>
         <div className='flex'>
-          <div class='relative'>
+          <div className='relative'>
             <button
               onClick={() => setShow(!show)}
               className='p-2 border rounded-md hover:bg-[#254A75] hover:text-white text-[#254A75]'
@@ -33,15 +33,15 @@ const MobileNavbar = () => {
 
             {show ? (
               <div
-                class='absolute right-0 z-10 mt-4 w-56 origin-top-right rounded-md border border-gray-100 bg-white shadow-lg'
+                className='absolute right-0 z-10 mt-4 w-56 origin-top-right rounded-md border border-gray-100 bg-white shadow-lg'
                 role='menu'
               >
                 {urlName == '/' ? (
-                  <div class='p-2'>
+                  <div className='p-2'>
                     <Link href={'/'}>
                       <div
                         href='#'
-                        class='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                        className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
                       >
                         Beranda
                       </div>
@@ -50,7 +50,7 @@ const MobileNavbar = () => {
                     <Link href={'/'}>
                       <div
                         href='#'
-                        class='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                        className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
                       >
                         Tentang
                       </div>
@@ -58,18 +58,18 @@ const MobileNavbar = () => {
                     <Link href={'/login'}>
                       <div
                         href='#'
-                        class='block rounded-lg px-4 py-2 text-sm text-[#254A75] hover:bg-[#254A75]/5'
+                        className='block rounded-lg px-4 py-2 text-sm text-[#254A75] hover:bg-[#254A75]/5'
                       >
                         Login / Register
                       </div>
                     </Link>
                   </div>
                 ) : (
-                  <div class='p-2'>
+                  <div className='p-2'>
                     <Link href={'/dashboard'}>
                       <div
                         href='#'
-                        class='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                        className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
                       >
                         Akun Saya
                       </div>
@@ -78,7 +78,7 @@ const MobileNavbar = () => {
                     <Link href={'/dashboard/keluarga'}>
                       <div
                         href='#'
-                        class='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                        className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
                       >
                         Keluarga
                       </div>
@@ -86,7 +86,7 @@ const MobileNavbar = () => {
                     <Link href={'/dashboard/keluarga'}>
                       <div
                         href='#'
-                        class='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                        className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
                       >
                         Pengungsian
                       </div>
@@ -95,7 +95,7 @@ const MobileNavbar = () => {
                     <Link href={'/'}>
                       <button
                         type='submit'
-                        class='flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50'
+                        className='flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50'
                       >
                         Logout
                       </button>
