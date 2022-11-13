@@ -14,7 +14,7 @@ const Dashboard = () => {
               type='text'
               id='nama'
               value={'Warga 1'}
-              className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#307DD1] font-medium'
+              className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
             />
           </div>
           <div className='flex flex-col gap-3'>
@@ -25,7 +25,7 @@ const Dashboard = () => {
               type='text'
               id='alamat'
               value={'Bandung'}
-              className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#307DD1] font-medium'
+              className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
             />
           </div>
           <div className='flex flex-col gap-3'>
@@ -36,14 +36,13 @@ const Dashboard = () => {
               type='text'
               id='notelp'
               value={'089123456789'}
-              className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#307DD1] font-medium'
+              className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
             />
           </div>
         </div>
         <button className='px-3 py-2 rounded-md border border-[#307DD1] mt-5 hover:bg-[#307DD1] transition hover:text-white'>
           Update Profile
         </button>
-        
       </div>
     </Layout>
   );
