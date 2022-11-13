@@ -13,7 +13,7 @@ const Sidebar = () => {
   const urlName = router.pathname;
 
   return (
-    <div className='w-1/3 bg-white p-5 rounded-lg'>
+    <div className='bg-white p-5 rounded-lg'>
       <div className='flex items-center gap-3'>
         <HiOutlineUserCircle className='h-16 w-16' />
         <h3 className='font-semibold text-xl'>Warga 1</h3>
