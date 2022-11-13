@@ -6,7 +6,7 @@ const Layout = ({ children, title }) => {
   return (
     <div>
       <Navbar />
-      
+
       <div className='bg-[#EFF0F2]'>
         <div className='flex mx-auto w-[90%] max-w-screen-xl gap-5 py-10 pt-20 min-h-screen'>
           <Sidebar />
