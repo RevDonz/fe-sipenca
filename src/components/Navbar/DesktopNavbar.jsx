@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { HiBars3, HiChevronDown, HiOutlineUserCircle } from 'react-icons/hi2';
+import { Link as Scroll } from 'react-scroll';
 import useWindowScroll from '../../lib/useWindowScroll';
 
 const DesktopNavbar = () => {
@@ -28,9 +29,11 @@ const DesktopNavbar = () => {
               Beranda
             </button>
           </Link>
-          <div className='rounded-md px-3 py-2 text-[#254A75] transition hover:bg-[#254A75] hover:text-white'>
-            Tentang
-          </div>
+          <Scroll to='tentang' spy smooth>
+            <div className='rounded-md px-3 py-2 text-[#254A75] transition hover:bg-[#254A75] hover:text-white'>
+              Tentang
+            </div>
+          </Scroll>
           {urlName == '/dashboard' ||
           urlName == '/dashboard/keluarga' ||
           urlName == '/dashboard/pengungsian' ? (
