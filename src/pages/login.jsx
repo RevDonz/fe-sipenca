@@ -1,9 +1,42 @@
+import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
 import { HiInbox, HiLockClosed } from 'react-icons/hi2';
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const router = useRouter();
+
+  const SubmitHandler = async () => {
+    try {
+      const params = new URLSearchParams();
+      params.append('username', username);
+      params.append('password', password);
+
+      const res = await toast.promise(
+        axios.post('https://0f9vta.deta.dev/api/akun/login', params),
+        {
+          pending: 'Loading..',
+          success: 'Login Berhasil!',
+          error: 'Login Gagal!',
+        }
+      );
+
+      if (res.status == 200) {
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('token', JSON.stringify(res.data));
+        }
+        router.push('/dashboard');
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className='min-h-screen w-full flex justify-center items-center bg-[#E1EBF3]'>
       <div className='bg-white rounded-lg w-96 h-1/2 p-5'>
@@ -27,6 +60,8 @@ const LoginPage = () => {
             id='text'
             className='w-full pl-10 bg-gray-200 focus:outline-none'
             placeholder='Username'
+            onChange={(e) => setUsername(e.target.value)}
+            autoComplete={false}
           />
         </div>
 
@@ -41,17 +76,18 @@ const LoginPage = () => {
             id='password'
             className='w-full pl-10 bg-gray-200 focus:outline-none'
             placeholder='Password'
+            autoComplete={false}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
-        <Link href='/dashboard'>
-          <button
-            type='submit'
-            className=' text-white font-bold py-2 px-4 rounded-md bg-[#51557E] hover:bg-[#34375a] mt-8 w-full'
-          >
-            Login
-          </button>
-        </Link>
+        <button
+          type='submit'
+          className=' text-white font-bold py-2 px-4 rounded-md bg-[#51557E] hover:bg-[#34375a] mt-8 w-full'
+          onClick={SubmitHandler}
+        >
+          Login
+        </button>
 
         <div className='text-sm font-normal text-center mt-3 w-full px-3 py-2'>
           Belum punya akun?
