@@ -53,12 +53,17 @@ const keluarga = () => {
                 Jl. Melati no 04, Kota Bandung, Jawa Barat
               </td>
               <td>
-                <button
-                  type='button'
-                  className='rounded-md px-3 py-2 bg-[#254A75] text-white'
-                >
-                  Edit
-                </button>
+                <div className='flex'>
+                  <button
+                    type='button'
+                    className='rounded-md px-3 py-2 bg-[#254A75] text-white'
+                  >
+                    Edit
+                  </button>
+                  <button className='px-3 py-2 rounded-md bg-red-500 hover:bg-red-700 text-white'>
+                    Hapus
+                  </button>
+                </div>
               </td>
             </tr>
             <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-[#254A75]'>
@@ -74,12 +79,17 @@ const keluarga = () => {
                 Jl. Melati no 04, Kota Bandung, Jawa Barat
               </td>
               <td>
-                <button
-                  type='button'
-                  className='rounded-md px-3 py-2 bg-[#254A75] text-white'
-                >
-                  Edit
-                </button>
+                <div className='flex'>
+                  <button
+                    type='button'
+                    className='rounded-md px-3 py-2 bg-[#254A75] text-white'
+                  >
+                    Edit
+                  </button>
+                  <button className='px-3 py-2 rounded-md bg-red-500 hover:bg-red-700 text-white'>
+                    Hapus
+                  </button>
+                </div>
               </td>
             </tr>
             <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-[#254A75]'>
@@ -95,12 +105,17 @@ const keluarga = () => {
                 Jl. Melati no 04, Kota Bandung, Jawa Barat
               </td>
               <td>
-                <button
-                  type='button'
-                  className='rounded-md px-3 py-2 bg-[#254A75] text-white'
-                >
-                  Edit
-                </button>
+                <div className='flex'>
+                  <button
+                    type='button'
+                    className='rounded-md px-3 py-2 bg-[#254A75] text-white'
+                  >
+                    Edit
+                  </button>
+                  <button className='px-3 py-2 rounded-md bg-red-500 hover:bg-red-700 text-white'>
+                    Hapus
+                  </button>
+                </div>
               </td>
             </tr>
           </tbody>
