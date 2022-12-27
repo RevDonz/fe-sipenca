@@ -1,34 +1,35 @@
-import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { HiInbox, HiLockClosed, HiUser } from 'react-icons/hi2';
-import { toast } from 'react-toastify';
 
 const Register = () => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('');
+  const [role, setRole] = useState('warga');
   const router = useRouter();
 
   const SubmitHandler = async () => {
     try {
-      const json = JSON.stringify({
+      const json = {
         email: email,
         username: username,
         password: password,
         role: role,
-      });
-      const res = await toast.promise(
-        axios.post('https://0f9vta.deta.dev/api/akun/login', json),
-        {
-          pending: 'Loading..',
-          success: 'Register Berhasil!',
-          error: 'Register Gagal!',
-        }
-      );
+      };
+
+      console.log(json);
+
+      // const res = await toast.promise(
+      //   axios.post('https://0f9vta.deta.dev/api/akun/signup', json),
+      //   {
+      //     pending: 'Loading..',
+      //     success: 'Register Berhasil!',
+      //     error: 'Register Gagal!',
+      //   }
+      // );
 
       if (res.status == 200) {
         router.push('/login');
@@ -118,6 +119,7 @@ const Register = () => {
             id='role'
             class='w-full bg-gray-200 rounded-md pl-9 focus:outline-none'
             onChange={(e) => setRole(e.target.value)}
+            value={role}
           >
             <option value='warga'>Warga</option>
             <option value='petugas'>Petugas</option>

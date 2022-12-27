@@ -3,12 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import { HiInbox, HiLockClosed } from 'react-icons/hi2';
+import { HiEye, HiEyeSlash, HiInbox, HiLockClosed } from 'react-icons/hi2';
 import { toast } from 'react-toastify';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isPassword, setIsPassword] = useState(true);
   const router = useRouter();
 
   const SubmitHandler = async () => {
@@ -49,8 +50,8 @@ const LoginPage = () => {
         />
         <h1 className='text-center font-medium text-xl mt-4'>LOGIN</h1>
 
-        <div className='bg-gray-200 rounded-md mt-2 w-full px-3 py-2 focus-within:ring-2 focus-within:ring-[#51557E]'>
-          <div className='absolute pointer-events-none'>
+        <div className='bg-gray-200 rounded-md mt-2 w-full px-3 py-2 focus-within:ring-2 focus-within:ring-[#51557E] flex items-center'>
+          <div className='mr-5'>
             <HiInbox className='h-5 w-5 text-gray-500' />
           </div>
 
@@ -58,27 +59,32 @@ const LoginPage = () => {
             type='text'
             name='text'
             id='text'
-            className='w-full pl-10 bg-gray-200 focus:outline-none'
+            className='w-full bg-transparent focus:outline-none'
             placeholder='Username'
             onChange={(e) => setUsername(e.target.value)}
-            autoComplete={false}
           />
         </div>
 
-        <div className='bg-gray-200 rounded-md mt-2 w-full px-3 py-2 focus-within:ring-2 focus-within:ring-[#51557E]'>
-          <div className='absolute pointer-events-none'>
+        <div className='bg-gray-200 rounded-md mt-2 w-full px-3 py-2 focus-within:ring-2 focus-within:ring-[#51557E] flex items-center'>
+          <div className='mr-5'>
             <HiLockClosed className='h-5 w-5 text-gray-500' />
           </div>
 
           <input
-            type='password'
+            type={isPassword ? 'password' : 'text'}
             name='password'
             id='password'
-            className='w-full pl-10 bg-gray-200 focus:outline-none'
+            className='w-full bg-transparent focus:outline-none'
             placeholder='Password'
-            autoComplete={false}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <button onClick={() => setIsPassword(!isPassword)} className="ml-5">
+            {isPassword ? (
+              <HiEye className='h-5 w-5 text-gray-500' />
+            ) : (
+              <HiEyeSlash className='h-5 w-5 text-gray-500' />
+            )}
+          </button>
         </div>
 
         <button
