@@ -2,7 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import { HiInbox, HiLockClosed, HiUser } from 'react-icons/hi2';
+import {
+  HiEye,
+  HiEyeSlash,
+  HiInbox,
+  HiLockClosed,
+  HiUser,
+} from 'react-icons/hi2';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -10,6 +16,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('warga');
   const router = useRouter();
+  const [isPassword, setIsPassword] = useState(true);
 
   const SubmitHandler = async () => {
     try {
@@ -20,16 +27,14 @@ const Register = () => {
         role: role,
       };
 
-      console.log(json);
-
-      // const res = await toast.promise(
-      //   axios.post('https://0f9vta.deta.dev/api/akun/signup', json),
-      //   {
-      //     pending: 'Loading..',
-      //     success: 'Register Berhasil!',
-      //     error: 'Register Gagal!',
-      //   }
-      // );
+      const res = await toast.promise(
+        axios.post('https://0f9vta.deta.dev/api/akun/signup', json),
+        {
+          pending: 'Loading..',
+          success: 'Register Berhasil!',
+          error: 'Register Gagal!',
+        }
+      );
 
       if (res.status == 200) {
         router.push('/login');
@@ -51,11 +56,9 @@ const Register = () => {
         <h1 className='font-medium text-center text-xl mt-4'>REGISTER</h1>
 
         {/*inputbox email*/}
-        <div className='bg-gray-200 rounded-md mt-2 w-full px-3 py-2 focus-within:ring-2 focus-within:ring-[#51557E]'>
-          {' '}
+        <div className='bg-gray-200 rounded-md mt-2 w-full px-3 py-2 focus-within:ring-2 focus-within:ring-[#51557E] flex items-center'>
           {/*container input email*/}
-          <div className='absolute pointer-events-none'>
-            {' '}
+          <div className='mr-5'>
             {/*icon email */}
             <HiInbox className='h-6 w-6 text-gray-500' />
           </div>
@@ -63,19 +66,17 @@ const Register = () => {
             type='email'
             name='email'
             id='email'
-            className='w-full pl-10 bg-gray-200 focus:outline-none'
+            className='w-full bg-gray-200 focus:outline-none'
             placeholder='Email'
             onChange={(e) => setEmail(e.target.value)}
-          />{' '}
+          />
           {/*input email */}
         </div>
 
         {/*inputbox email*/}
-        <div className='bg-gray-200 rounded-md mt-2 w-full px-3 py-2 focus-within:ring-2 focus-within:ring-[#51557E]'>
-          {' '}
+        <div className='bg-gray-200 rounded-md mt-2 w-full px-3 py-2 focus-within:ring-2 focus-within:ring-[#51557E] flex items-center'>
           {/*container input email*/}
-          <div className='absolute pointer-events-none'>
-            {' '}
+          <div className='mr-5'>
             {/*icon email */}
             <HiInbox className='h-6 w-6 text-gray-500' />
           </div>
@@ -83,30 +84,33 @@ const Register = () => {
             type='text'
             name='username'
             id='username'
-            className='w-full pl-10 bg-gray-200 focus:outline-none'
+            className='w-full bg-gray-200 focus:outline-none'
             placeholder='Username'
             onChange={(e) => setUsername(e.target.value)}
-          />{' '}
+          />
           {/*input email */}
         </div>
 
-        {/*inputbox password*/}
-        <div className='bg-gray-200 rounded-md mt-2 w-full px-3 py-2 focus-within:ring-2 focus-within:ring-[#51557E]'>
-          {' '}
-          {/*container input password*/}
-          <div className='absolute pointer-events-none'>
-            {' '}
-            {/*icon password */}
-            <HiLockClosed className='h-6 w-6 text-gray-500' />
+        <div className='bg-gray-200 rounded-md mt-2 w-full px-3 py-2 focus-within:ring-2 focus-within:ring-[#51557E] flex items-center'>
+          <div className='mr-5'>
+            <HiLockClosed className='h-5 w-5 text-gray-500' />
           </div>
+
           <input
-            type='password'
+            type={isPassword ? 'password' : 'text'}
             name='password'
             id='password'
-            className='w-full pl-10 bg-gray-200 focus:outline-none'
+            className='w-full bg-transparent focus:outline-none'
             placeholder='Password'
             onChange={(e) => setPassword(e.target.value)}
           />
+          <button onClick={() => setIsPassword(!isPassword)} className='ml-5'>
+            {isPassword ? (
+              <HiEye className='h-5 w-5 text-gray-500' />
+            ) : (
+              <HiEyeSlash className='h-5 w-5 text-gray-500' />
+            )}
+          </button>
         </div>
 
         {/*inputan role*/}
@@ -140,7 +144,6 @@ const Register = () => {
             href='/login'
             class='text-blue-700 hover:underline dark:text-blue-500'
           >
-            {' '}
             Login
           </Link>
         </div>
