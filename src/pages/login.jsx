@@ -13,6 +13,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [isPassword, setIsPassword] = useState(true);
   const router = useRouter();
+  const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const SubmitHandler = async () => {
     try {
@@ -20,7 +21,7 @@ const LoginPage = () => {
       params.append('username', username);
       params.append('password', password);
       const res = await toast.promise(
-        axios.post('https://0f9vta.deta.dev/v1/akun/login', params),
+        axios.post(backend + '/v1/akun/login', params),
         {
           pending: 'Loading..',
           success: 'Login Berhasil!',

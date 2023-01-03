@@ -1,10 +1,10 @@
+import axios from 'axios';
+import { getCookie } from 'cookies-next';
 import Link from 'next/link';
 import React from 'react';
 import Layout from '../../components/Layout';
-import axios from 'axios';
-import { getCookie } from 'cookies-next';
 
-const EditProfil = ({user}) => {
+const EditProfil = ({ user }) => {
   return (
     <Layout title={'Edit Profil'} user={user}>
       <div className='p-5'>
@@ -61,7 +61,9 @@ const EditProfil = ({user}) => {
 };
 
 const fetchDataUser = async (token) => {
-  return await axios.get('https://0f9vta.deta.dev/v2/profil/', {
+  const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+  return await axios.get(backend + '/v2/profil/', {
     headers: {
       Authorization: `bearer ${token}`,
     },
