@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import React from 'react';
 import Layout from '../../components/Layout';
+import axios from 'axios';
+import { getCookie } from 'cookies-next';
 
-const EditProfil = () => {
+const EditProfil = ({user}) => {
   return (
-    <Layout title={'Edit Profil'}>
+    <Layout title={'Edit Profil'} user={user}>
       <div className='p-5'>
         <div className='space-y-5'>
           <div className='flex flex-col gap-3'>
