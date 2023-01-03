@@ -19,9 +19,8 @@ const LoginPage = () => {
       const params = new URLSearchParams();
       params.append('username', username);
       params.append('password', password);
-
       const res = await toast.promise(
-        axios.post('https://0f9vta.deta.dev/api/akun/login', params),
+        axios.post('https://0f9vta.deta.dev/v1/akun/login', params),
         {
           pending: 'Loading..',
           success: 'Login Berhasil!',

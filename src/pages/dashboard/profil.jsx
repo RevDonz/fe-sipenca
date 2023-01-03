@@ -56,7 +56,7 @@ const Dashboard = ({ user }) => {
 };
 
 const fetchDataUser = async (token) => {
-  return await axios.get('https://0f9vta.deta.dev/api/profil/', {
+  return await axios.get('https://0f9vta.deta.dev/v2/profil/', {
     headers: {
       Authorization: `bearer ${token}`,
     },
