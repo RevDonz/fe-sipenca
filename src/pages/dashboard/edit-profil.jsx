@@ -1,10 +1,12 @@
+import axios from 'axios';
+import { getCookie } from 'cookies-next';
 import Link from 'next/link';
 import React from 'react';
 import Layout from '../../components/Layout';
 
-const EditProfil = () => {
+const EditProfil = ({ user }) => {
   return (
-    <Layout title={'Edit Profil'}>
+    <Layout title={'Edit Profil'} user={user}>
       <div className='p-5'>
         <div className='space-y-5'>
           <div className='flex flex-col gap-3'>
@@ -14,7 +16,7 @@ const EditProfil = () => {
             <input
               type='text'
               id='nama'
-              defaultValue={'Warga 1'}
+              defaultValue={user.nama_lengkap}
               className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
             />
           </div>
@@ -25,7 +27,7 @@ const EditProfil = () => {
             <input
               type='text'
               id='alamat'
-              defaultValue={'Bandung'}
+              defaultValue={user.alamat}
               className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
             />
           </div>
@@ -57,5 +59,24 @@ const EditProfil = () => {
     </Layout>
   );
 };
+
+const fetchDataUser = async (token) => {
+  const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+  return await axios.get(backend + '/v2/profil/', {
+    headers: {
+      Authorization: `bearer ${token}`,
+    },
+  });
+};
+
+export async function getServerSideProps({ req, res }) {
+  const token = getCookie('token', { req, res });
+
+  const userResponse = await fetchDataUser(token);
+  const user = userResponse.data;
+
+  return { props: { user } };
+}
 
 export default EditProfil;

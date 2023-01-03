@@ -1,10 +1,12 @@
+import axios from 'axios';
+import { getCookie } from 'cookies-next';
 import Link from 'next/link';
 import React from 'react';
 import Layout from '../../components/Layout';
 
-const FormKeluarga = () => {
+const FormKeluarga = ({ user }) => {
   return (
-    <Layout title={'Keluarga'}>
+    <Layout title={'Keluarga'} user={user}>
       <div class='w-full'>
         <form class='bg-white rounded px-8 pt-6 pb-8 mb-4'>
           <div class='mb-4'>
@@ -77,5 +79,24 @@ const FormKeluarga = () => {
     </Layout>
   );
 };
+
+const fetchDataUser = async (token) => {
+  const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+  return await axios.get(backend + '/v2/profil/', {
+    headers: {
+      Authorization: `bearer ${token}`,
+    },
+  });
+};
+
+export async function getServerSideProps({ req, res }) {
+  const token = getCookie('token', { req, res });
+
+  const userResponse = await fetchDataUser(token);
+  const user = userResponse.data;
+
+  return { props: { user } };
+}
 
 export default FormKeluarga;

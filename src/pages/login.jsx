@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setCookie } from 'cookies-next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,15 +13,15 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [isPassword, setIsPassword] = useState(true);
   const router = useRouter();
+  const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const SubmitHandler = async () => {
     try {
       const params = new URLSearchParams();
       params.append('username', username);
       params.append('password', password);
-
       const res = await toast.promise(
-        axios.post('https://0f9vta.deta.dev/api/akun/login', params),
+        axios.post(backend + '/v1/akun/login', params),
         {
           pending: 'Loading..',
           success: 'Login Berhasil!',
@@ -29,9 +30,10 @@ const LoginPage = () => {
       );
 
       if (res.status == 200) {
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('token', JSON.stringify(res.data));
-        }
+        // if (typeof window !== 'undefined') {
+        //   localStorage.setItem('token', JSON.stringify(res.data.access_token));
+        // }
+        setCookie('token', res.data.access_token);
         router.push('/dashboard');
       }
     } catch (err) {

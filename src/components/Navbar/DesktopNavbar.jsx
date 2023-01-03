@@ -1,3 +1,4 @@
+import { deleteCookie } from 'cookies-next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -6,11 +7,16 @@ import { HiBars3, HiChevronDown, HiOutlineUserCircle } from 'react-icons/hi2';
 import { Link as Scroll } from 'react-scroll';
 import useWindowScroll from '../../lib/useWindowScroll';
 
-const DesktopNavbar = () => {
+const DesktopNavbar = ({ user }) => {
   const scrollPos = useWindowScroll();
   const router = useRouter();
   const urlName = router.pathname;
   const [show, setShow] = useState(false);
+
+  const Logout = () => {
+    deleteCookie('token');
+    router.push('/');
+  };
 
   return (
     <div className={`bg-white transition ${scrollPos > 50 ? 'shadow-md' : ''}`}>
@@ -38,17 +44,19 @@ const DesktopNavbar = () => {
           urlName == '/dashboard/edit-profil' ||
           urlName == '/dashboard/keluarga' ||
           urlName == '/dashboard/profil' ? (
-            <div class='relative'>
+            <div className='relative'>
               {urlName == '/dashboard' ||
               urlName == '/dashboard/keluarga' ||
               urlName == '/dashboard/edit-profil' ||
               urlName == '/dashboard/profil' ? (
                 <button
-                  class='flex items-center rounded border border-[#254A75] px-3 py-2 gap-1 text-[#254A75] hover:bg-gray-100 focus:outline-none'
+                  className='flex items-center rounded border border-[#254A75] px-3 py-2 gap-1 text-[#254A75] hover:bg-gray-100 focus:outline-none'
                   onClick={() => setShow(!show)}
                 >
                   <HiOutlineUserCircle className='h-6 w-6' />
-                  <span class='text-sm font-medium'>Warga 1</span>
+                  <span className='text-sm font-medium'>
+                    {user.nama_lengkap}
+                  </span>
                   <HiChevronDown className='stroke-2 translate-y-[1.5px]' />
                 </button>
               ) : (
@@ -62,14 +70,14 @@ const DesktopNavbar = () => {
 
               {show ? (
                 <div
-                  class='absolute right-0 z-10 mt-4 w-56 origin-top-right rounded-md border border-gray-100 bg-white shadow-lg'
+                  className='absolute right-0 z-10 mt-4 w-56 origin-top-right rounded-md border border-gray-100 bg-white shadow-lg'
                   role='menu'
                 >
-                  <div class='p-2'>
+                  <div className='p-2'>
                     <Link href={'/dashboard'}>
                       <div
                         href='#'
-                        class='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                        className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
                       >
                         Akun Saya
                       </div>
@@ -78,7 +86,7 @@ const DesktopNavbar = () => {
                     <Link href={'/dashboard/keluarga'}>
                       <div
                         href='#'
-                        class='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                        className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
                       >
                         Keluarga
                       </div>
@@ -86,20 +94,19 @@ const DesktopNavbar = () => {
                     <Link href={'/dashboard/keluarga'}>
                       <div
                         href='#'
-                        class='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                        className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
                       >
                         Pengungsian
                       </div>
                     </Link>
 
-                    <Link href={'/'}>
-                      <button
-                        type='submit'
-                        class='flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50'
-                      >
-                        Logout
-                      </button>
-                    </Link>
+                    <button
+                      type='submit'
+                      className='flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50'
+                      onClick={() => Logout()}
+                    >
+                      Logout
+                    </button>
                   </div>
                 </div>
               ) : (

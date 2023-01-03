@@ -20,6 +20,7 @@ const Register = () => {
   const [role, setRole] = useState('warga');
   const router = useRouter();
   const [isPassword, setIsPassword] = useState(true);
+  const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const SubmitHandler = async () => {
     try {
@@ -31,7 +32,7 @@ const Register = () => {
       };
 
       const res = await toast.promise(
-        axios.post('https://0f9vta.deta.dev/api/akun/signup', json),
+        axios.post(backend + '/v1/akun/signup', json),
         {
           pending: 'Loading..',
           success: 'Register Berhasil!',

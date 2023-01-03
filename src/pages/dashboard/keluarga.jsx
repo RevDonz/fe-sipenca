@@ -1,10 +1,12 @@
+import axios from 'axios';
+import { getCookie } from 'cookies-next';
 import Link from 'next/link';
 import React from 'react';
 import Layout from '../../components/Layout';
 
-const keluarga = () => {
+const keluarga = ({ user }) => {
   return (
-    <Layout title={'Data Keluarga'}>
+    <Layout title={'Data Keluarga'} user={user}>
       <div className='bg-white p-10 pt-12 text-[#254A75] flex justify-between'>
         <div>
           <Link href={'/dashboard/form-keluarga'}>
@@ -124,5 +126,24 @@ const keluarga = () => {
     </Layout>
   );
 };
+
+const fetchDataUser = async (token) => {
+  const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+  return await axios.get(backend + '/v2/profil/', {
+    headers: {
+      Authorization: `bearer ${token}`,
+    },
+  });
+};
+
+export async function getServerSideProps({ req, res }) {
+  const token = getCookie('token', { req, res });
+
+  const userResponse = await fetchDataUser(token);
+  const user = userResponse.data;
+
+  return { props: { user } };
+}
 
 export default keluarga;
