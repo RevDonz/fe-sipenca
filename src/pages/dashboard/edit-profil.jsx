@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getCookie } from 'cookies-next';
+import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
@@ -60,6 +61,9 @@ const EditProfil = ({ user }) => {
 
   return (
     <Layout title={'Edit Profil'} user={user}>
+      <Head>
+        <title>Sipenca | Dashboard - Edit Profil</title>
+      </Head>
       <div className='p-5'>
         <div className='space-y-5'>
           <div className='flex flex-col gap-3'>

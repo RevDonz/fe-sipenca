@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
 import Navbar from '../components/Navbar';
@@ -5,6 +6,9 @@ import Navbar from '../components/Navbar';
 const NotFound = () => {
   return (
     <div>
+      <Head>
+        <title>Sipenca | Not Found</title>
+      </Head>
       <Navbar />
       <div className='lg:px-24 lg:py-24 md:py-20 md:px-44 px-4 py-24 items-center flex justify-center flex-col-reverse lg:flex-row md:gap-28 gap-16'>
         <div className='xl:pt-24 w-full xl:w-1/2 relative pb-12 lg:pb-0'>
