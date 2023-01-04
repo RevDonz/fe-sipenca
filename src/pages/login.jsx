@@ -69,6 +69,7 @@ const LoginPage = () => {
               className='w-full bg-transparent focus:outline-none'
               placeholder='Username'
               onChange={(e) => setUsername(e.target.value)}
+              autoFocus
             />
           </div>
 

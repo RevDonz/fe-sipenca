@@ -5,6 +5,14 @@ import React from 'react';
 import Layout from '../../components/Layout';
 
 const Dashboard = ({ user }) => {
+  const {
+    nama_lengkap,
+    alamat_user,
+    no_tlp,
+    kota_lahir,
+    tanggal_lahir,
+    penyakit,
+  } = user;
   return (
     <Layout title={'Profile'} user={user}>
       <div className='p-5'>
@@ -16,7 +24,7 @@ const Dashboard = ({ user }) => {
             <input
               type='text'
               id='nama'
-              value={user.nama_lengkap}
+              value={nama_lengkap}
               className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
             />
           </div>
@@ -27,7 +35,7 @@ const Dashboard = ({ user }) => {
             <input
               type='text'
               id='alamat'
-              value={'Bandung'}
+              value={alamat_user}
               className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
             />
           </div>
@@ -38,7 +46,7 @@ const Dashboard = ({ user }) => {
             <input
               type='text'
               id='notelp'
-              value={'089123456789'}
+              value={no_tlp}
               className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
             />
           </div>

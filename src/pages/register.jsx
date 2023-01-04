@@ -77,6 +77,7 @@ const Register = () => {
               className='w-full bg-gray-200 focus:outline-none'
               placeholder='Email'
               onChange={(e) => setEmail(e.target.value)}
+              autoFocus
             />
             {/*input email */}
           </div>
