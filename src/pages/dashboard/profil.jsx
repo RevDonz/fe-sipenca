@@ -50,6 +50,28 @@ const Dashboard = ({ user }) => {
               className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
             />
           </div>
+          <div className='flex flex-col gap-3'>
+            <label htmlFor='kota_lahir' className='font-medium'>
+              Kota Lahir
+            </label>
+            <input
+              type='text'
+              id='kota_lahir'
+              value={kota_lahir}
+              className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
+            />
+          </div>
+          <div className='flex flex-col gap-3'>
+            <label htmlFor='tanggal_lahir' className='font-medium'>
+              Tanggal Lahir
+            </label>
+            <input
+              type='text'
+              id='tanggal_lahir'
+              value={tanggal_lahir}
+              className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
+            />
+          </div>
         </div>
         <div className='flex justify-end'>
           <Link href={'/dashboard/edit-profil'}>
