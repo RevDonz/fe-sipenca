@@ -30,10 +30,8 @@ const LoginPage = () => {
       );
 
       if (res.status == 200) {
-        // if (typeof window !== 'undefined') {
-        //   localStorage.setItem('token', JSON.stringify(res.data.access_token));
-        // }
         setCookie('token', res.data.access_token);
+        
         router.push('/dashboard');
       }
     } catch (err) {
