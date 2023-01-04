@@ -17,6 +17,8 @@ const LoginPage = () => {
   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const SubmitHandler = async () => {
+    if (!username) return toast.warning('Username tidak boleh kosong!');
+    if (!password) return toast.warning('Password tidak boleh kosong!');
     if (loading) toast.loading('loading');
 
     const params = new URLSearchParams();
