@@ -16,7 +16,7 @@ const Sidebar = ({user}) => {
     <div className='bg-white p-5 rounded-lg'>
       <div className='flex items-center gap-3'>
         <HiOutlineUserCircle className='h-16 w-16' />
-        <h3 className='font-semibold text-xl'>{user.nama_lengkap}</h3>
+        <h3 className='font-semibold text-xl'>{user.nama_lengkap || ""}</h3>
       </div>
       <div className='flex flex-col justify-start mt-5 gap-1 transition'>
         <Link href={'/dashboard'}>
