@@ -12,27 +12,25 @@ const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isPassword, setIsPassword] = useState(true);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const SubmitHandler = async () => {
     try {
+      if (loading) toast.loading('loading');
+
       const params = new URLSearchParams();
       params.append('username', username);
       params.append('password', password);
-      const res = await toast.promise(
-        axios.post(backend + '/v1/akun/login', params),
-        {
-          pending: 'Loading..',
-          success: 'Login Berhasil!',
-          error: 'Login Gagal!',
-        }
-      );
 
+      const res = await axios.post(backend + '/v1/akun/login', params);
       if (res.status == 200) {
         setCookie('token', res.data.access_token);
-        
         router.push('/dashboard');
+        toast.dismiss();
+        toast.success('Berhasil Login!');
+        setSuccess(false);
       }
     } catch (err) {
       console.log(err);

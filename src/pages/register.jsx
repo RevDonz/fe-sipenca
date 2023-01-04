@@ -24,6 +24,10 @@ const Register = () => {
 
   const SubmitHandler = async () => {
     try {
+      if (!email) return toast.warning('Email tidak boleh kosong!');
+      if (!username) return toast.warning('Username tidak boleh kosong!');
+      if (!password) return toast.warning('Password tidak boleh kosong!');
+
       const json = {
         email: email,
         username: username,
