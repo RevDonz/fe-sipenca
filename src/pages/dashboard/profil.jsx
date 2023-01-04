@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getCookie } from 'cookies-next';
+import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 import Layout from '../../components/Layout';
@@ -16,6 +17,9 @@ const Dashboard = ({ user }) => {
 
   return (
     <Layout title={'Profile'} user={user}>
+      <Head>
+        <title>Sipenca | Dashboard - Profil</title>
+      </Head>
       <div className='p-5'>
         <div className='space-y-5'>
           <div className='flex flex-col gap-3'>

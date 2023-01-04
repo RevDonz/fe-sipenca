@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getCookie } from 'cookies-next';
+import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 import Layout from '../../components/Layout';
@@ -7,6 +8,9 @@ import Layout from '../../components/Layout';
 const keluarga = ({ user }) => {
   return (
     <Layout title={'Data Keluarga'} user={user}>
+      <Head>
+        <title>Sipenca | Dashboard - Keluarga</title>
+      </Head>
       <div className='bg-white p-10 pt-12 text-[#254A75] flex justify-between'>
         <div>
           <Link href={'/dashboard/form-keluarga'}>

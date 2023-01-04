@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getCookie } from 'cookies-next';
+import Head from 'next/head';
 import React from 'react';
 import Layout from '../../components/Layout';
 
@@ -7,6 +8,9 @@ const PengungsianWarga = ({ user, pengungsian }) => {
   const { data } = pengungsian;
   return (
     <Layout title={'Pengungsian'} user={user}>
+      <Head>
+        <title>Sipenca | Dashboard - Pengungsian</title>
+      </Head>
       <div className='bg-[#FFFFFF] p-10 pt-12'>
         <div className='bg-[#EFF0F2] overflow-x-auto relative mx-auto max-w-screen-xl rounded-lg p-5'>
           <table className='text-[#254A75] text-left p-4 w-full'>
