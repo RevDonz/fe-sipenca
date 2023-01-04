@@ -4,8 +4,6 @@ import React from 'react';
 import Layout from '../../components/Layout';
 
 const PengungsianWarga = ({ user, pengungsian }) => {
-  console.log(pengungsian);
-
   const { data } = pengungsian;
   return (
     <Layout title={'Pengungsian'} user={user}>

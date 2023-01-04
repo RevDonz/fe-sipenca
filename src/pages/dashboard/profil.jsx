@@ -13,6 +13,7 @@ const Dashboard = ({ user }) => {
     tanggal_lahir,
     penyakit,
   } = user;
+
   return (
     <Layout title={'Profile'} user={user}>
       <div className='p-5'>
@@ -24,8 +25,9 @@ const Dashboard = ({ user }) => {
             <input
               type='text'
               id='nama'
-              value={nama_lengkap}
+              defaultValue={nama_lengkap}
               className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
+              readOnly
             />
           </div>
           <div className='flex flex-col gap-3'>
@@ -35,8 +37,9 @@ const Dashboard = ({ user }) => {
             <input
               type='text'
               id='alamat'
-              value={alamat_user}
+              defaultValue={alamat_user}
               className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
+              readOnly
             />
           </div>
           <div className='flex flex-col gap-3'>
@@ -46,8 +49,9 @@ const Dashboard = ({ user }) => {
             <input
               type='text'
               id='notelp'
-              value={no_tlp}
+              defaultValue={no_tlp}
               className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
+              readOnly
             />
           </div>
           <div className='flex flex-col gap-3'>
@@ -57,8 +61,9 @@ const Dashboard = ({ user }) => {
             <input
               type='text'
               id='kota_lahir'
-              value={kota_lahir}
+              defaultValue={kota_lahir}
               className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
+              readOnly
             />
           </div>
           <div className='flex flex-col gap-3'>
@@ -68,8 +73,9 @@ const Dashboard = ({ user }) => {
             <input
               type='text'
               id='tanggal_lahir'
-              value={tanggal_lahir}
+              defaultValue={tanggal_lahir}
               className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
+              readOnly
             />
           </div>
         </div>
