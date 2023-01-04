@@ -17,23 +17,24 @@ const LoginPage = () => {
   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const SubmitHandler = async () => {
+    if (loading) toast.loading('loading');
+
+    const params = new URLSearchParams();
+    params.append('username', username);
+    params.append('password', password);
+
     try {
-      if (loading) toast.loading('loading');
-
-      const params = new URLSearchParams();
-      params.append('username', username);
-      params.append('password', password);
-
       const res = await axios.post(backend + '/v1/akun/login', params);
       if (res.status == 200) {
         setCookie('token', res.data.access_token);
         router.push('/dashboard');
         toast.dismiss();
         toast.success('Berhasil Login!');
-        setSuccess(false);
+        setLoading(false);
       }
     } catch (err) {
-      console.log(err);
+      toast.dismiss();
+      toast.error(err.response?.data?.detail);
     }
   };
 
