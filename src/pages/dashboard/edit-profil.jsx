@@ -33,7 +33,8 @@ const EditProfil = ({ user }) => {
       if (!alamat) return toast.warning('Alamat tidak boleh kosong!');
       if (!noTelp) return toast.warning('No Telepon tidak boleh kosong!');
       if (!kotaLahir) return toast.warning('Kota Lahir tidak boleh kosong!');
-      if (!tanggalLahir) return toast.warning('Tanggal Lahir tidak boleh kosong!');
+      if (!tanggalLahir)
+        return toast.warning('Tanggal Lahir tidak boleh kosong!');
 
       if (!success) toast.loading('loading');
 
