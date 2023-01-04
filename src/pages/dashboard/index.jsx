@@ -1,16 +1,15 @@
 import axios from 'axios';
 import { getCookie } from 'cookies-next';
-import React, { useState } from 'react';
+import React from 'react';
 import Layout from '../../components/Layout';
 
-const PengungsianWarga = ({ user }) => {
-  const [tes, setTes] = useState();
-  console.log(user);
+const PengungsianWarga = ({ user, pengungsian }) => {
+  const { data } = pengungsian;
   return (
     <Layout title={'Pengungsian'} user={user}>
       <div className='bg-[#FFFFFF] p-10 pt-12'>
         <div className='bg-[#EFF0F2] overflow-x-auto relative mx-auto max-w-screen-xl rounded-lg p-5'>
-          <table className='table-auto text-[#254A75] text-left p-4'>
+          <table className='text-[#254A75] text-left p-4 w-full'>
             <thead className='border-b-2'>
               <tr>
                 <th className='p-5'></th>
@@ -20,36 +19,23 @@ const PengungsianWarga = ({ user }) => {
               </tr>
             </thead>
             <tbody>
-              <tr className='border-b-2'>
-                <td className='p-5'>
-                  <button
-                    type='button'
-                    className='rounded-md px-3 py-2 bg-[#254A75] text-white'
-                  >
-                    Join
-                  </button>
-                </td>
-                <td className='p-5'>Pengungsian 1</td>
-                <td className='p-5'>
-                  Jl. Mawar no 04, Kota Bandung, Jawa Barat
-                </td>
-                <td className='p-5'>17/20</td>
-              </tr>
-              <tr className='border-b-2'>
-                <td className='p-5'>
-                  <button
-                    type='button'
-                    className='rounded-md px-3 py-2 bg-[#254A75] text-white'
-                  >
-                    Join
-                  </button>
-                </td>
-                <td className='p-5'>Pengungsian 2</td>
-                <td className='p-5'>
-                  Jl. Mawar no 04, Kota Bandung, Jawa Barat
-                </td>
-                <td className='p-5'>20/20</td>
-              </tr>
+              {data.list_pengungsian.map((data, index) => {
+                return (
+                  <tr className='border-b-2' key={index}>
+                    <td className='p-5'>
+                      <button
+                        type='button'
+                        className='rounded-md px-3 py-2 bg-[#254A75] text-white'
+                      >
+                        Join
+                      </button>
+                    </td>
+                    <td className='p-5'>{data.nama_tempat}</td>
+                    <td className='p-5'>{data.alamat}</td>
+                    <td className='p-5'>17/{data.kapasitas_tempat}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
@@ -68,13 +54,26 @@ const fetchDataUser = async (token) => {
   });
 };
 
+const fetchDataPengungsian = async (token) => {
+  const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+  return await axios.get(backend + '/v2/pengungsian/', {
+    headers: {
+      Authorization: `bearer ${token}`,
+    },
+  });
+};
+
 export async function getServerSideProps({ req, res }) {
   const token = getCookie('token', { req, res });
 
   const userResponse = await fetchDataUser(token);
   const user = userResponse.data;
 
-  return { props: { user } };
+  const pengungsianResponse = await fetchDataPengungsian(token);
+  const pengungsian = pengungsianResponse.data;
+
+  return { props: { user, pengungsian } };
 }
 
 export default PengungsianWarga;

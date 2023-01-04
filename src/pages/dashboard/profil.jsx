@@ -5,6 +5,15 @@ import React from 'react';
 import Layout from '../../components/Layout';
 
 const Dashboard = ({ user }) => {
+  const {
+    nama_lengkap,
+    alamat_user,
+    no_tlp,
+    kota_lahir,
+    tanggal_lahir,
+    penyakit,
+  } = user;
+
   return (
     <Layout title={'Profile'} user={user}>
       <div className='p-5'>
@@ -16,8 +25,9 @@ const Dashboard = ({ user }) => {
             <input
               type='text'
               id='nama'
-              value={user.nama_lengkap}
+              defaultValue={nama_lengkap}
               className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
+              readOnly
             />
           </div>
           <div className='flex flex-col gap-3'>
@@ -27,8 +37,9 @@ const Dashboard = ({ user }) => {
             <input
               type='text'
               id='alamat'
-              value={'Bandung'}
+              defaultValue={alamat_user}
               className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
+              readOnly
             />
           </div>
           <div className='flex flex-col gap-3'>
@@ -38,8 +49,33 @@ const Dashboard = ({ user }) => {
             <input
               type='text'
               id='notelp'
-              value={'089123456789'}
+              defaultValue={no_tlp}
               className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
+              readOnly
+            />
+          </div>
+          <div className='flex flex-col gap-3'>
+            <label htmlFor='kota_lahir' className='font-medium'>
+              Kota Lahir
+            </label>
+            <input
+              type='text'
+              id='kota_lahir'
+              defaultValue={kota_lahir}
+              className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
+              readOnly
+            />
+          </div>
+          <div className='flex flex-col gap-3'>
+            <label htmlFor='tanggal_lahir' className='font-medium'>
+              Tanggal Lahir
+            </label>
+            <input
+              type='text'
+              id='tanggal_lahir'
+              defaultValue={tanggal_lahir}
+              className='px-3 py-2 border rounded-md focus:outline-none focus:ring-[#307DD1] focus:ring-1 bg-gray-50 text-[#254A75] font-medium'
+              readOnly
             />
           </div>
         </div>
