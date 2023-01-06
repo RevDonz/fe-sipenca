@@ -1,17 +1,47 @@
 import axios from 'axios';
 import { getCookie } from 'cookies-next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React from 'react';
+import { toast } from 'react-toastify';
 import Layout from '../../components/Layout';
 
-const PengungsianWarga = ({ user, pengungsian }) => {
+const PengungsianWarga = ({ pengungsian }) => {
   const { data } = pengungsian;
+  const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
+  const token = getCookie('token');
+  const router = useRouter();
+  let user = {};
 
-  const UserCookie = JSON.parse(getCookie('user'));
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
 
-  // console.log(data.list_pengungsian[0].pengungsi.length);
+  if (typeof getCookie('user') !== 'undefined' && getCookie('user') !== '') {
+    user = JSON.parse(getCookie('user'));
+  }
+
+  const HandlePengungsian = async (key) => {
+    const res = await axios.post(
+      backend + '/v1/mengungsi/',
+      {
+        key: key,
+      },
+      {
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
+      }
+    );
+
+    if (res.status == 200) {
+      refreshData();
+      toast.success(res.data.message);
+    }
+  };
+
   return (
-    <Layout title={'Pengungsian'} user={UserCookie}>
+    <Layout title={'Pengungsian'} user={user}>
       <Head>
         <title>Sipenca | Dashboard - Pengungsian</title>
       </Head>
@@ -34,6 +64,7 @@ const PengungsianWarga = ({ user, pengungsian }) => {
                       <button
                         type='button'
                         className='rounded-md px-3 py-2 bg-[#254A75] text-white'
+                        onClick={() => HandlePengungsian(data.key)}
                       >
                         Join
                       </button>
@@ -57,15 +88,15 @@ const PengungsianWarga = ({ user, pengungsian }) => {
   );
 };
 
-const fetchDataUser = async (token) => {
-  const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
+// const fetchDataUser = async (token) => {
+//   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-  return await axios.get(backend + '/v2/profil/', {
-    headers: {
-      Authorization: `bearer ${token}`,
-    },
-  });
-};
+//   return await axios.get(backend + '/v2/profil/', {
+//     headers: {
+//       Authorization: `bearer ${token}`,
+//     },
+//   });
+// };
 
 const fetchDataPengungsian = async (token) => {
   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
@@ -80,13 +111,14 @@ const fetchDataPengungsian = async (token) => {
 export async function getServerSideProps({ req, res }) {
   const token = getCookie('token', { req, res });
 
-  const userResponse = await fetchDataUser(token);
-  const user = userResponse.data;
+  // const userResponse = await fetchDataUser(token);
+  // const user = userResponse.data;
 
   const pengungsianResponse = await fetchDataPengungsian(token);
   const pengungsian = pengungsianResponse.data;
 
-  return { props: { user, pengungsian } };
+  return { props: { pengungsian } };
+  // return { props: { user, pengungsian } };
 }
 
 export default PengungsianWarga;
