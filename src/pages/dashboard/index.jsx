@@ -9,7 +9,7 @@ const PengungsianWarga = ({ user, pengungsian }) => {
 
   const UserCookie = JSON.parse(getCookie('user'));
 
-  console.log(UserCookie);
+  // console.log(data.list_pengungsian[0].pengungsi.length);
   return (
     <Layout title={'Pengungsian'} user={UserCookie}>
       <Head>
@@ -40,7 +40,12 @@ const PengungsianWarga = ({ user, pengungsian }) => {
                     </td>
                     <td className='p-5'>{data.nama_tempat}</td>
                     <td className='p-5'>{data.alamat}</td>
-                    <td className='p-5'>17/{data.kapasitas_tempat}</td>
+                    <td className='p-5'>
+                      {data.pengungsi
+                        ? data.kapasitas_tempat - data.pengungsi.length
+                        : data.kapasitas_tempat}
+                      /{data.kapasitas_tempat}
+                    </td>
                   </tr>
                 );
               })}
