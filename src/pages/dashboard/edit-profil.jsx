@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getCookie } from 'cookies-next';
+import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -7,7 +7,13 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import Layout from '../../components/Layout';
 
-const EditProfil = ({ user }) => {
+const EditProfil = () => {
+  let user = {};
+
+  if (typeof getCookie('user') !== 'undefined' && getCookie('user') !== '') {
+    user = JSON.parse(getCookie('user'));
+  }
+
   const {
     nama_lengkap,
     alamat_user,
@@ -57,6 +63,7 @@ const EditProfil = ({ user }) => {
 
       if (res.status == 200) {
         router.push('/dashboard/profil');
+        setCookie('user', res.data);
         toast.dismiss();
         toast.success('Berhasil update profil!');
         setSuccess(true);
@@ -152,23 +159,23 @@ const EditProfil = ({ user }) => {
   );
 };
 
-const fetchDataUser = async (token) => {
-  const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
+// const fetchDataUser = async (token) => {
+//   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-  return await axios.get(backend + '/v2/profil/', {
-    headers: {
-      Authorization: `bearer ${token}`,
-    },
-  });
-};
+//   return await axios.get(backend + '/v2/profil/', {
+//     headers: {
+//       Authorization: `bearer ${token}`,
+//     },
+//   });
+// };
 
-export async function getServerSideProps({ req, res }) {
-  const token = getCookie('token', { req, res });
+// export async function getServerSideProps({ req, res }) {
+//   const token = getCookie('token', { req, res });
 
-  const userResponse = await fetchDataUser(token);
-  const user = userResponse.data;
+//   const userResponse = await fetchDataUser(token);
+//   const user = userResponse.data;
 
-  return { props: { user } };
-}
+//   return { props: { user } };
+// }
 
 export default EditProfil;
