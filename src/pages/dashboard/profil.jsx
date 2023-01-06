@@ -5,8 +5,12 @@ import React from 'react';
 import Layout from '../../components/Layout';
 
 const Dashboard = () => {
-  const user = JSON.parse(getCookie('user'));
+  let user = {};
 
+  if (typeof getCookie('user') !== 'undefined' && getCookie('user') !== '') {
+    user = JSON.parse(getCookie('user'));
+  }
+  
   const {
     nama_lengkap,
     alamat_user,

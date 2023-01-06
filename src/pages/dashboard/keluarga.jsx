@@ -5,7 +5,11 @@ import React from 'react';
 import Layout from '../../components/Layout';
 
 const keluarga = () => {
-  const user = JSON.parse(getCookie('user'));
+  let user = {};
+
+  if (typeof getCookie('user') !== 'undefined' && getCookie('user') !== '') {
+    user = JSON.parse(getCookie('user'));
+  }
 
   return (
     <Layout title={'Data Keluarga'} user={user}>
