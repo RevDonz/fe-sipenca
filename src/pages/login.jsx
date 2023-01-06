@@ -113,7 +113,7 @@ const LoginPage = () => {
             Belum punya akun?
             <Link
               href='/register'
-              class='text-blue-700 hover:underline dark:text-blue-500 ml-1'
+              className='text-blue-700 hover:underline dark:text-blue-500 ml-1'
             >
               Register
             </Link>

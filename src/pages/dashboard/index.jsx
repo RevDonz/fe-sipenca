@@ -6,9 +6,12 @@ import Layout from '../../components/Layout';
 
 const PengungsianWarga = ({ user, pengungsian }) => {
   const { data } = pengungsian;
-  // console.log(JSON.parse(getCookie('user')));
+
+  const UserCookie = JSON.parse(getCookie('user'));
+
+  console.log(UserCookie);
   return (
-    <Layout title={'Pengungsian'} user={user}>
+    <Layout title={'Pengungsian'} user={UserCookie}>
       <Head>
         <title>Sipenca | Dashboard - Pengungsian</title>
       </Head>
