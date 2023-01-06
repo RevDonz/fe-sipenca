@@ -2,28 +2,25 @@ import axios from 'axios';
 import { getCookie } from 'cookies-next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Layout from '../../components/Layout';
 
-const PengungsianWarga = ({ pengungsian }) => {
+const PengungsianWarga = ({ account, pengungsian }) => {
   const { data } = pengungsian;
+  const { is_join } = account;
   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
   const token = getCookie('token');
   const router = useRouter();
-  let user = {};
-
+  const [user, setUser] = useState('');
+  const [keyPengungsian, setKeyPengungsian] = useState('');
   const refreshData = () => {
     router.replace(router.asPath);
   };
 
-  if (typeof getCookie('user') !== 'undefined' && getCookie('user') !== '') {
-    user = JSON.parse(getCookie('user'));
-  }
-
   const HandlePengungsian = async (key) => {
     const res = await axios.post(
-      backend + '/v1/mengungsi/',
+      backend + '/v2/mengungsi/',
       {
         key: key,
       },
@@ -34,11 +31,30 @@ const PengungsianWarga = ({ pengungsian }) => {
       }
     );
 
+    setKeyPengungsian(res.data.data.key);
+
     if (res.status == 200) {
       refreshData();
       toast.success(res.data.message);
     }
   };
+
+  const HandleKeluar = async (key) => {
+    const res = await axios.delete(backend + '/v2/mengungsi/', {
+      headers: {
+        Authorization: `bearer ${token}`,
+      },
+    });
+
+    if (res.status == 200) {
+      refreshData();
+      toast.success(res.data.message);
+    }
+  };
+
+  useEffect(() => {
+    setUser(JSON.parse(getCookie('user')));
+  }, []);
 
   return (
     <Layout title={'Pengungsian'} user={user}>
@@ -61,13 +77,51 @@ const PengungsianWarga = ({ pengungsian }) => {
                 return (
                   <tr className='border-b-2' key={index}>
                     <td className='p-5'>
-                      <button
+                      {is_join ? (
+                        <div className=''>
+                          {data.key == keyPengungsian ? (
+                            <button
+                              type='button'
+                              className={
+                                'rounded-md px-3 py-2 w-20 bg-[#254A75] text-white '
+                              }
+                              onClick={() => HandleKeluar(data.key)}
+                            >
+                              Keluar
+                            </button>
+                          ) : (
+                            <button
+                              type='button'
+                              className={`rounded-md px-3 py-2 w-20 bg-[#254A75] text-white ${
+                                is_join ? 'bg-slate-300' : 'bg-[#254A75]'
+                              }`}
+                              disabled
+                            >
+                              Join
+                            </button>
+                          )}
+                        </div>
+                      ) : (
+                        <button
+                          type='button'
+                          className={`rounded-md px-3 py-2 w-20  text-white ${
+                            is_join ? 'bg-slate-300' : 'bg-[#254A75]'
+                          }`}
+                          onClick={() => HandlePengungsian(data.key)}
+                          disabled={is_join}
+                        >
+                          Join
+                        </button>
+                      )}
+
+                      {/* <button
                         type='button'
-                        className='rounded-md px-3 py-2 bg-[#254A75] text-white'
+                        className={`rounded-md px-3 py-2 bg-[#254A75] text-white disabled disabled:bg-slate-300`}
                         onClick={() => HandlePengungsian(data.key)}
+                        disabled={is_join}
                       >
                         Join
-                      </button>
+                      </button> */}
                     </td>
                     <td className='p-5'>{data.nama_tempat}</td>
                     <td className='p-5'>{data.alamat}</td>
@@ -88,16 +142,6 @@ const PengungsianWarga = ({ pengungsian }) => {
   );
 };
 
-// const fetchDataUser = async (token) => {
-//   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
-
-//   return await axios.get(backend + '/v2/profil/', {
-//     headers: {
-//       Authorization: `bearer ${token}`,
-//     },
-//   });
-// };
-
 const fetchDataPengungsian = async (token) => {
   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -108,17 +152,26 @@ const fetchDataPengungsian = async (token) => {
   });
 };
 
+const fetchDataAccount = async (token) => {
+  const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+  return await axios.get(backend + '/v1/akun/', {
+    headers: {
+      Authorization: `bearer ${token}`,
+    },
+  });
+};
+
 export async function getServerSideProps({ req, res }) {
   const token = getCookie('token', { req, res });
 
-  // const userResponse = await fetchDataUser(token);
-  // const user = userResponse.data;
+  const accResponse = await fetchDataAccount(token);
+  const account = accResponse.data;
 
   const pengungsianResponse = await fetchDataPengungsian(token);
   const pengungsian = pengungsianResponse.data;
 
-  return { props: { pengungsian } };
-  // return { props: { user, pengungsian } };
+  return { props: { account, pengungsian } };
 }
 
 export default PengungsianWarga;
