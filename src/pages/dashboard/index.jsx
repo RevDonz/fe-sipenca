@@ -6,6 +6,7 @@ import Layout from '../../components/Layout';
 
 const PengungsianWarga = ({ user, pengungsian }) => {
   const { data } = pengungsian;
+  // console.log(JSON.parse(getCookie('user')));
   return (
     <Layout title={'Pengungsian'} user={user}>
       <Head>

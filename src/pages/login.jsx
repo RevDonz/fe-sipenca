@@ -28,7 +28,14 @@ const LoginPage = () => {
     try {
       const res = await axios.post(backend + '/v1/akun/login', params);
       if (res.status == 200) {
-        setCookie('token', res.data.access_token);
+        const token = res.data.access_token;
+        const user = await axios.get(backend + '/v2/profil/', {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
+        setCookie('token', token);
+        setCookie('user', user.data);
         router.push('/dashboard');
         toast.dismiss();
         toast.success('Berhasil Login!');
