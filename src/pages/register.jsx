@@ -134,7 +134,7 @@ const Register = () => {
             <select
               name='role'
               id='role'
-              class='w-full bg-gray-200 rounded-md pl-9 focus:outline-none'
+              className='w-full bg-gray-200 rounded-md pl-9 focus:outline-none'
               onChange={(e) => setRole(e.target.value)}
               value={role}
             >
@@ -151,11 +151,11 @@ const Register = () => {
             Register
           </button>
 
-          <div class='mt-2 text-center'>
+          <div className='mt-2 text-center'>
             Sudah punya akun?
             <Link
               href='/login'
-              class='text-blue-700 hover:underline dark:text-blue-500'
+              className='text-blue-700 hover:underline dark:text-blue-500'
             >
               Login
             </Link>
