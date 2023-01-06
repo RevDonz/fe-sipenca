@@ -36,7 +36,10 @@ const LoginPage = () => {
         });
         setCookie('token', token);
         setCookie('user', user.data);
-        router.push('/dashboard');
+
+        if (user.data.role === 'admin') router.push('/admin');
+        if (user.data.role === 'warga') router.push('/dashboard');
+
         toast.dismiss();
         toast.success('Berhasil Login!');
         setLoading(false);

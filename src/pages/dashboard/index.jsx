@@ -11,15 +11,17 @@ const PengungsianWarga = ({ pengungsian }) => {
   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
   const token = getCookie('token');
   const router = useRouter();
+
   let user = {};
+  if (typeof getCookie('user') !== 'undefined' && getCookie('user') !== '') {
+    user = JSON.parse(getCookie('user'));
+  }
+
+  console.log(user);
 
   const refreshData = () => {
     router.replace(router.asPath);
   };
-
-  if (typeof getCookie('user') !== 'undefined' && getCookie('user') !== '') {
-    user = JSON.parse(getCookie('user'));
-  }
 
   const HandlePengungsian = async (key) => {
     const res = await axios.post(
@@ -88,16 +90,6 @@ const PengungsianWarga = ({ pengungsian }) => {
   );
 };
 
-// const fetchDataUser = async (token) => {
-//   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
-
-//   return await axios.get(backend + '/v2/profil/', {
-//     headers: {
-//       Authorization: `bearer ${token}`,
-//     },
-//   });
-// };
-
 const fetchDataPengungsian = async (token) => {
   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -111,14 +103,10 @@ const fetchDataPengungsian = async (token) => {
 export async function getServerSideProps({ req, res }) {
   const token = getCookie('token', { req, res });
 
-  // const userResponse = await fetchDataUser(token);
-  // const user = userResponse.data;
-
   const pengungsianResponse = await fetchDataPengungsian(token);
   const pengungsian = pengungsianResponse.data;
 
   return { props: { pengungsian } };
-  // return { props: { user, pengungsian } };
 }
 
 export default PengungsianWarga;

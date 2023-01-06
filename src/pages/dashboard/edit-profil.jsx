@@ -53,6 +53,7 @@ const EditProfil = () => {
           no_tlp: noTelp,
           kota_lahir: kotaLahir,
           tanggal_lahir: tanggalLahir,
+          role: 'warga'
         },
         {
           headers: {
