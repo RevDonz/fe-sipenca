@@ -41,11 +41,13 @@ const DesktopNavbar = ({ user }) => {
             </div>
           </Scroll>
           {urlName == '/dashboard' ||
+          urlName == '/admin' ||
           urlName == '/dashboard/edit-profil' ||
           urlName == '/dashboard/keluarga' ||
           urlName == '/dashboard/profil' ? (
             <div className='relative'>
               {urlName == '/dashboard' ||
+              urlName == '/admin' ||
               urlName == '/dashboard/keluarga' ||
               urlName == '/dashboard/edit-profil' ||
               urlName == '/dashboard/profil' ? (
