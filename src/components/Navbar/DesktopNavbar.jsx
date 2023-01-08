@@ -3,7 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import { HiBars3, HiChevronDown, HiOutlineUserCircle } from 'react-icons/hi2';
+import { FaChevronDown, FaRegUserCircle } from 'react-icons/fa';
+import { IoIosMenu } from 'react-icons/io';
 import { Link as Scroll } from 'react-scroll';
 import { SidebarMenuAdmin, SidebarMenuWarga } from '../../data/menu';
 import useWindowScroll from '../../lib/useWindowScroll';
@@ -60,18 +61,18 @@ const DesktopNavbar = ({ user }) => {
                   className='flex items-center rounded border border-[#254A75] px-3 py-2 gap-1 text-[#254A75] hover:bg-gray-100 focus:outline-none'
                   onClick={() => setShow(!show)}
                 >
-                  <HiOutlineUserCircle className='h-6 w-6' />
-                  <span className='text-sm font-medium'>
+                  <FaRegUserCircle className='h-6 w-6' />
+                  <span className='text-sm ml-1 font-medium'>
                     {user.nama_lengkap}
                   </span>
-                  <HiChevronDown className='stroke-2 translate-y-[1.5px]' />
+                  <FaChevronDown className='stroke-2 translate-y-[1.5px]' />
                 </button>
               ) : (
                 <button
                   onClick={() => setShow(!show)}
                   className='p-2 border rounded-md hover:bg-[#254A75] hover:text-white text-[#254A75]'
                 >
-                  <HiBars3 className='h-6 w-6' />
+                  <IoIosMenu className='h-6 w-6' />
                 </button>
               )}
 

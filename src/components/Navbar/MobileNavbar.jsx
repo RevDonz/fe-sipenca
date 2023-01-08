@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import { HiBars3 } from 'react-icons/hi2';
+import { HiMenu } from 'react-icons/hi';
 import { Link as Scroll } from 'react-scroll';
 import { SidebarMenuAdmin, SidebarMenuWarga } from '../../data/menu';
 import useWindowScroll from '../../lib/useWindowScroll';
@@ -38,7 +38,7 @@ const MobileNavbar = ({ user }) => {
               onClick={() => setShow(!show)}
               className='p-2 border rounded-md hover:bg-[#254A75] hover:text-white text-[#254A75]'
             >
-              <HiBars3 className='h-6 w-6' />
+              <HiMenu className='h-6 w-6' />
             </button>
 
             {show && (

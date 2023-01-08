@@ -19,11 +19,11 @@ const EditProfil = () => {
     penyakit,
   } = user;
 
-  const [nama, setNama] = useState(nama_lengkap);
-  const [alamat, setAlamat] = useState(alamat_user);
-  const [noTelp, setNoTelp] = useState(no_tlp);
-  const [kotaLahir, setKotaLahir] = useState(kota_lahir);
-  const [tanggalLahir, setTanggalLahir] = useState(tanggal_lahir);
+  const [nama, setNama] = useState('');
+  const [alamat, setAlamat] = useState('');
+  const [noTelp, setNoTelp] = useState('');
+  const [kotaLahir, setKotaLahir] = useState('');
+  const [tanggalLahir, setTanggalLahir] = useState('');
   const [success, setSuccess] = useState(false);
   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
   const token = getCookie('token');
@@ -72,7 +72,13 @@ const EditProfil = () => {
 
   useEffect(() => {
     setUser(JSON.parse(getCookie('user')));
-  }, []);
+    setNama(nama_lengkap);
+    setAlamat(alamat_user);
+    setNoTelp(no_tlp);
+    setKotaLahir(kota_lahir);
+    setTanggalLahir(tanggal_lahir);
+  }, [nama_lengkap, alamat_user, no_tlp, kota_lahir, tanggal_lahir]);
+
   return (
     <Layout title={'Edit Profil'} user={user}>
       <Head>

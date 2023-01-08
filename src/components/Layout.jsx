@@ -4,7 +4,7 @@ import Sidebar from './Sidebar';
 
 const Layout = ({ children, title, user }) => {
   return (
-    <div>
+    <div className='font-sans'>
       <Navbar user={user} />
 
       <div className='bg-[#EFF0F2]'>

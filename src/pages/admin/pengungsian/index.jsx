@@ -13,6 +13,7 @@ const DataPengungsian = ({ pengungsian }) => {
   const [user, setUser] = useState('');
   const [token, setToken] = useState('');
   const [success, setSuccess] = useState(false);
+  const [show, setShow] = useState(false);
   const router = useRouter();
 
   const HandleSubmit = async (e) => {
@@ -132,13 +133,13 @@ const DataPengungsian = ({ pengungsian }) => {
         </div>
         <div className='flex items-center justify-between'>
           <button
-            className='mt-3 px-3 py-2 bg-green-500 text-white rounded-md hover:bg-green-600'
+            className='mt-3 p-2 bg-green-500 text-white rounded-md hover:bg-green-600 text-sm'
             type='submit'
           >
             Ubah Data
           </button>
           <button
-            className='mt-3 px-3 py-2 bg-red-500 text-white rounded-md hover:bg-red-600'
+            className='mt-3 p-2 bg-red-500 text-white rounded-md hover:bg-red-600 text-sm'
             onClick={(e) => {
               e.preventDefault();
               HandleDelete(data.key);
@@ -182,12 +183,13 @@ const DataPengungsian = ({ pengungsian }) => {
   }, []);
 
   return (
-    <Layout title={'Pengungsian'} user={user}>
+    <Layout title={'Data Pengungsian'} user={user}>
       <Head>
         <title>Sipenca | Dashboard - Pengungsian</title>
       </Head>
       <div className='p-10'>
         <DataTable
+          className='test-datatable'
           columns={columns}
           data={data.list_pengungsian}
           pagination
