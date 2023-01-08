@@ -88,7 +88,12 @@ const Dashboard = () => {
           </div>
         </div>
         <div className='flex justify-end'>
-          <Link href={'/dashboard/edit-profil'}>
+          <Link
+            href={{
+              pathname: '/dashboard/edit-profil',
+              query: { user: JSON.stringify(user) },
+            }}
+          >
             <button className='px-3 py-2 rounded-md border border-[#254A75] mt-5 hover:bg-[#254A75] transition hover:text-white ml-auto'>
               Update Profile
             </button>
