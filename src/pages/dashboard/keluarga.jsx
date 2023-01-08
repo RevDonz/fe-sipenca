@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Layout from '../../components/Layout';
 
-const keluarga = () => {
+const Keluarga = () => {
   const [user, setUser] = useState('');
 
   useEffect(() => {
@@ -136,4 +136,4 @@ const keluarga = () => {
   );
 };
 
-export default keluarga;
+export default Keluarga;
