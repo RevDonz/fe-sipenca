@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { HiOutlineUserCircle } from 'react-icons/hi2';
+import { FaRegUserCircle } from 'react-icons/fa';
 import { SidebarMenuAdmin, SidebarMenuWarga } from '../data/menu';
 
 const Sidebar = ({ user }) => {
@@ -14,7 +14,7 @@ const Sidebar = ({ user }) => {
   return (
     <div className='bg-white p-5 rounded-lg'>
       <div className='flex items-center gap-3'>
-        <HiOutlineUserCircle className='h-16 w-16' />
+        <FaRegUserCircle className='h-16 w-16' />
         <h3 className='font-semibold text-xl'>{user.nama_lengkap || ''}</h3>
       </div>
       <div className='flex flex-col justify-start mt-5 gap-1 transition'>

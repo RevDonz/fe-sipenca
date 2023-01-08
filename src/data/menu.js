@@ -1,5 +1,5 @@
+import { FaHome, FaRegUser, FaRegUserCircle } from 'react-icons/fa';
 import { GiCampingTent } from 'react-icons/gi';
-import { HiHome, HiOutlineUser, HiOutlineUserGroup } from 'react-icons/hi2';
 
 export const NavbarMenu = [
   {
@@ -21,12 +21,12 @@ export const SidebarMenuWarga = [
   {
     url: '/dashboard/profil',
     menu: 'Akun Saya',
-    icon: <HiOutlineUser className={`stroke-2 w-6 h-6`} />,
+    icon: <FaRegUser className={`stroke-2 w-6 h-6`} />,
   },
   {
     url: '/dashboard/keluarga',
     menu: 'Keluarga',
-    icon: <HiOutlineUserGroup className='stroke-[1.5px] w-6 h-6' />,
+    icon: <FaRegUserCircle className='stroke-[1.5px] w-6 h-6' />,
   },
 ];
 
@@ -34,7 +34,7 @@ export const SidebarMenuAdmin = [
   {
     url: '/admin/',
     menu: 'Dashboard',
-    icon: <HiHome className='stroke-[1.5px] w-6 h-6' />,
+    icon: <FaHome className='stroke-[1.5px] w-6 h-6' />,
   },
   {
     url: '/admin/pengungsian',
