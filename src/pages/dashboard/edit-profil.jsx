@@ -3,16 +3,12 @@ import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Layout from '../../components/Layout';
 
 const EditProfil = () => {
-  let user = {};
-
-  if (typeof getCookie('user') !== 'undefined' && getCookie('user') !== '') {
-    user = JSON.parse(getCookie('user'));
-  }
+  const [user, setUser] = useState('');
 
   const {
     nama_lengkap,
@@ -53,7 +49,7 @@ const EditProfil = () => {
           no_tlp: noTelp,
           kota_lahir: kotaLahir,
           tanggal_lahir: tanggalLahir,
-          role: 'warga'
+          role: 'warga',
         },
         {
           headers: {
@@ -74,6 +70,9 @@ const EditProfil = () => {
     }
   };
 
+  useEffect(() => {
+    setUser(JSON.parse(getCookie('user')));
+  }, []);
   return (
     <Layout title={'Edit Profil'} user={user}>
       <Head>

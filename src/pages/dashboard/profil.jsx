@@ -1,16 +1,12 @@
 import { getCookie } from 'cookies-next';
 import Head from 'next/head';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../../components/Layout';
 
 const Dashboard = () => {
-  let user = {};
+  const [user, setUser] = useState('');
 
-  if (typeof getCookie('user') !== 'undefined' && getCookie('user') !== '') {
-    user = JSON.parse(getCookie('user'));
-  }
-  
   const {
     nama_lengkap,
     alamat_user,
@@ -20,6 +16,9 @@ const Dashboard = () => {
     penyakit,
   } = user;
 
+  useEffect(() => {
+    setUser(JSON.parse(getCookie('user')));
+  }, []);
   return (
     <Layout title={'Profile'} user={user}>
       <Head>
