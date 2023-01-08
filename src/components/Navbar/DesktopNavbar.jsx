@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { HiBars3, HiChevronDown, HiOutlineUserCircle } from 'react-icons/hi2';
 import { Link as Scroll } from 'react-scroll';
+import { SidebarMenuAdmin, SidebarMenuWarga } from '../../data/menu';
 import useWindowScroll from '../../lib/useWindowScroll';
 
 const DesktopNavbar = ({ user }) => {
@@ -12,6 +13,8 @@ const DesktopNavbar = ({ user }) => {
   const router = useRouter();
   const urlName = router.pathname;
   const [show, setShow] = useState(false);
+  const SidebarMenu =
+    user && user.role === 'admin' ? SidebarMenuAdmin : SidebarMenuWarga;
 
   const Logout = () => {
     deleteCookie('token');
@@ -42,6 +45,7 @@ const DesktopNavbar = ({ user }) => {
           </Scroll>
           {urlName == '/dashboard' ||
           urlName == '/admin' ||
+          urlName == '/admin/pengungsian' ||
           urlName == '/dashboard/edit-profil' ||
           urlName == '/dashboard/keluarga' ||
           urlName == '/dashboard/profil' ? (
@@ -70,37 +74,24 @@ const DesktopNavbar = ({ user }) => {
                 </button>
               )}
 
-              {show ? (
+              {show && (
                 <div
                   className='absolute right-0 z-10 mt-4 w-56 origin-top-right rounded-md border border-gray-100 bg-white shadow-lg'
                   role='menu'
                 >
                   <div className='p-2'>
-                    <Link href={'/dashboard'}>
-                      <div
-                        href='#'
-                        className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
-                      >
-                        Akun Saya
-                      </div>
-                    </Link>
-
-                    <Link href={'/dashboard/keluarga'}>
-                      <div
-                        href='#'
-                        className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
-                      >
-                        Keluarga
-                      </div>
-                    </Link>
-                    <Link href={'/dashboard/keluarga'}>
-                      <div
-                        href='#'
-                        className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
-                      >
-                        Pengungsian
-                      </div>
-                    </Link>
+                    {SidebarMenu.map((data, index) => {
+                      return (
+                        <Link href={data.url} key={index}>
+                          <div
+                            href='#'
+                            className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                          >
+                            {data.menu}
+                          </div>
+                        </Link>
+                      );
+                    })}
 
                     <button
                       type='submit'
@@ -111,8 +102,6 @@ const DesktopNavbar = ({ user }) => {
                     </button>
                   </div>
                 </div>
-              ) : (
-                ''
               )}
             </div>
           ) : (
