@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import '~slick-carousel/slick/slick.css';
 @import '~slick-carousel/slick/slick-theme.css';
 
@@ -10,4 +11,25 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px rgb(229, 231, 235) inset !important;
+}
+
+/* rdt_Table
+rdt_TableRow
+rdt_TableCol
+rdt_TableCol_Sortable
+rdt_TableCell
+rdt_TableHeader
+rdt_TableFooter
+rdt_TableHead
+rdt_TableHeadRow
+rdt_TableBody
+rdt_ExpanderRow */
+
+
+.test-datatable .rdt_TableHeadRow {
+  @apply text-xs text-gray-700 uppercase bg-gray-50;
+}
+
+.test-datatable .rdt_Pagination {
+  @apply bg-red-50
 }
