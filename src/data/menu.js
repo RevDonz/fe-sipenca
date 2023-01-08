@@ -1,4 +1,5 @@
-import { HiOutlineUser } from 'react-icons/hi2';
+import { GiCampingTent } from 'react-icons/gi';
+import { HiHome, HiOutlineUser, HiOutlineUserGroup } from 'react-icons/hi2';
 
 export const NavbarMenu = [
   {
@@ -11,17 +12,33 @@ export const NavbarMenu = [
   },
 ];
 
-export const SidebarMenu = [
+export const SidebarMenuWarga = [
   {
-    url: '/',
-    link: 'Pengungsian',
+    url: '/dashboard',
+    menu: 'Pengungsian',
+    icon: <GiCampingTent className='stroke-[1.5px] w-6 h-6' />,
   },
   {
-    url: '/keluarga',
+    url: '/dashboard/profil',
+    menu: 'Akun Saya',
+    icon: <HiOutlineUser className={`stroke-2 w-6 h-6`} />,
+  },
+  {
+    url: '/dashboard/keluarga',
     menu: 'Keluarga',
+    icon: <HiOutlineUserGroup className='stroke-[1.5px] w-6 h-6' />,
+  },
+];
+
+export const SidebarMenuAdmin = [
+  {
+    url: '/admin/',
+    menu: 'Dashboard',
+    icon: <HiHome className='stroke-[1.5px] w-6 h-6' />,
   },
   {
-    url: '/profile',
-    menu: 'Profile',
+    url: '/admin/pengungsian',
+    menu: 'Pengungsian',
+    icon: <GiCampingTent className='stroke-[1.5px] w-6 h-6' />,
   },
 ];

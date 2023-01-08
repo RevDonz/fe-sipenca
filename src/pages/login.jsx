@@ -37,11 +37,15 @@ const LoginPage = () => {
         setCookie('token', token);
         setCookie('user', user.data);
 
-        if (user.data.role === 'admin') router.push('/admin');
+        if (user.data.role === 'admin') router.push('/admin/pengungsian');
         if (user.data.role === 'warga') router.push('/dashboard');
 
         toast.dismiss();
         toast.success('Berhasil Login!');
+        setLoading(false);
+      } else if (res.status == 500) {
+        toast.dismiss();
+        toast.success('Internal Server Error');
         setLoading(false);
       }
     } catch (err) {

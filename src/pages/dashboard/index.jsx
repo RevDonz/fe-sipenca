@@ -11,9 +11,9 @@ const PengungsianWarga = ({ account, pengungsian }) => {
   const { is_join } = account;
   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
   const token = getCookie('token');
-  const router = useRouter();
   const [user, setUser] = useState('');
   const [keyPengungsian, setKeyPengungsian] = useState('');
+  const router = useRouter();
   const refreshData = () => {
     router.replace(router.asPath);
   };
