@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getCookie } from 'cookies-next';
+import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
@@ -12,7 +12,9 @@ const PengungsianWarga = ({ account, pengungsian }) => {
   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
   const token = getCookie('token');
   const [user, setUser] = useState('');
-  const [keyPengungsian, setKeyPengungsian] = useState('');
+  const [keyPengungsian, setKeyPengungsian] = useState(
+    getCookie('keyPengungsian')
+  );
   const router = useRouter();
   const refreshData = () => {
     router.replace(router.asPath);
@@ -32,6 +34,7 @@ const PengungsianWarga = ({ account, pengungsian }) => {
     );
 
     setKeyPengungsian(res.data.data.key);
+    setCookie('keyPengungsian', res.data.data.key);
 
     if (res.status == 200) {
       refreshData();
@@ -54,6 +57,7 @@ const PengungsianWarga = ({ account, pengungsian }) => {
 
   useEffect(() => {
     setUser(JSON.parse(getCookie('user')));
+    // setKeyPengungsian(getCookie('keyPengungsian'))
   }, []);
 
   return (

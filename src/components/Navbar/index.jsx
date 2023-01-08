@@ -9,7 +9,7 @@ const Navbar = ({ user }) => {
         <DesktopNavbar user={user} />
       </div>
       <div className='block md:hidden'>
-        <MobileNavbar />
+        <MobileNavbar user={user} />
       </div>
     </div>
   );

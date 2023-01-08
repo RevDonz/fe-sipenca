@@ -18,6 +18,7 @@ const DesktopNavbar = ({ user }) => {
 
   const Logout = () => {
     deleteCookie('token');
+    deleteCookie('user');
     router.push('/');
   };
 

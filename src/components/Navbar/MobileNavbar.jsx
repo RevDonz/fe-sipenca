@@ -4,13 +4,22 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { HiBars3 } from 'react-icons/hi2';
 import { Link as Scroll } from 'react-scroll';
+import { SidebarMenuAdmin, SidebarMenuWarga } from '../../data/menu';
 import useWindowScroll from '../../lib/useWindowScroll';
 
-const MobileNavbar = () => {
+const MobileNavbar = ({ user }) => {
   const scrollPos = useWindowScroll();
   const [show, setShow] = useState(false);
   const router = useRouter();
   const urlName = router.pathname;
+  const SidebarMenu =
+    user && user.role === 'admin' ? SidebarMenuAdmin : SidebarMenuWarga;
+
+  const Logout = () => {
+    deleteCookie('token');
+    deleteCookie('user');
+    router.push('/');
+  };
 
   return (
     <div className={`bg-white transition ${scrollPos > 50 ? 'shadow-md' : ''}`}>
@@ -32,7 +41,7 @@ const MobileNavbar = () => {
               <HiBars3 className='h-6 w-6' />
             </button>
 
-            {show ? (
+            {show && (
               <div
                 className='absolute right-0 z-10 mt-4 w-56 origin-top-right rounded-md border border-gray-100 bg-white shadow-lg'
                 role='menu'
@@ -69,45 +78,28 @@ const MobileNavbar = () => {
                   </div>
                 ) : (
                   <div className='p-2'>
-                    <Link href={'/dashboard'}>
-                      <div
-                        href='#'
-                        className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
-                      >
-                        Pengungsian
-                      </div>
-                    </Link>
-                    <Link href={'/dashboard/profil'}>
-                      <div
-                        href='#'
-                        className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
-                      >
-                        Akun Saya
-                      </div>
-                    </Link>
-
-                    <Link href={'/dashboard/keluarga'}>
-                      <div
-                        href='#'
-                        className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
-                      >
-                        Keluarga
-                      </div>
-                    </Link>
-
-                    <Link href={'/'}>
-                      <button
-                        type='submit'
-                        className='flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50'
-                      >
-                        Logout
-                      </button>
-                    </Link>
+                    {SidebarMenu.map((data, index) => {
+                      return (
+                        <Link href={data.url} key={index}>
+                          <div
+                            href='#'
+                            className='block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                          >
+                            {data.menu}
+                          </div>
+                        </Link>
+                      );
+                    })}
+                    <button
+                      type='submit'
+                      className='flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50'
+                      onClick={() => Logout()}
+                    >
+                      Logout
+                    </button>
                   </div>
                 )}
               </div>
-            ) : (
-              ''
             )}
           </div>
         </div>

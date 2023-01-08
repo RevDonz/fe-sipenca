@@ -1,15 +1,15 @@
 import { getCookie } from 'cookies-next';
 import Head from 'next/head';
 import Link from 'next/link';
-import React from 'react';
+import { useEffect, useState } from 'react';
 import Layout from '../../components/Layout';
 
-const keluarga = () => {
-  let user = {};
+const Keluarga = () => {
+  const [user, setUser] = useState('');
 
-  if (typeof getCookie('user') !== 'undefined' && getCookie('user') !== '') {
-    user = JSON.parse(getCookie('user'));
-  }
+  useEffect(() => {
+    setUser(JSON.parse(getCookie('user')));
+  }, []);
 
   return (
     <Layout title={'Data Keluarga'} user={user}>
@@ -136,4 +136,4 @@ const keluarga = () => {
   );
 };
 
-export default keluarga;
+export default Keluarga;
