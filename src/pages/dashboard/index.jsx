@@ -117,21 +117,13 @@ const PengungsianWarga = ({ account, pengungsian }) => {
                           Join
                         </button>
                       )}
-
-                      {/* <button
-                        type='button'
-                        className={`rounded-md px-3 py-2 bg-[#254A75] text-white disabled disabled:bg-slate-300`}
-                        onClick={() => HandlePengungsian(data.key)}
-                        disabled={is_join}
-                      >
-                        Join
-                      </button> */}
                     </td>
                     <td className='p-5'>{data.nama_tempat}</td>
                     <td className='p-5'>{data.alamat}</td>
                     <td className='p-5'>
                       {data.pengungsi
-                        ? data.kapasitas_tempat - (data.kapasitas_tempat - data.pengungsi.length)
+                        ? data.kapasitas_tempat -
+                          (data.kapasitas_tempat - data.pengungsi.length)
                         : 0}
                       /{data.kapasitas_tempat}
                     </td>

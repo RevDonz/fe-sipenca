@@ -172,8 +172,9 @@ const DataPengungsian = ({ pengungsian }) => {
       cell: (row) => (
         <p>
           {row.pengungsi
-            ? row.kapasitas_tempat - row.pengungsi.length
-            : row.kapasitas_tempat}
+            ? row.kapasitas_tempat -
+              (row.kapasitas_tempat - row.pengungsi.length)
+            : 0}
           /{row.kapasitas_tempat}
         </p>
       ),
