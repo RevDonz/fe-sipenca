@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { toast } from 'react-toastify';
-import Layout from '../../../components/Layout';
+import Layout from '../../components/Layout';
 const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const DataPengungsian = ({ pengungsian }) => {
@@ -24,6 +24,10 @@ const DataPengungsian = ({ pengungsian }) => {
       const namaTempat = e.target.nama_tempat.value;
       const kapasitasTempat = e.target.kapasitas_tempat.value;
       const alamat = e.target.alamat.value;
+
+      if(!namaTempat) return toast.warning("Nama tempat tidak boleh kosong")
+      if(!kapasitasTempat) return toast.warning("Kapasitas tempat tidak boleh kosong")
+      if (!alamat) return toast.warning('Alamat tidak boleh kosong');
       if (!success) toast.loading('loading');
 
       const res = await axios.patch(
