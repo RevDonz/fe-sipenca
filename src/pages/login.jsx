@@ -26,7 +26,9 @@ const LoginPage = () => {
     params.append('password', password);
 
     try {
+      
       const res = await axios.post(backend + '/v1/akun/login', params);
+      console.log(res);
       if (res.status == 200) {
         const token = res.data.access_token;
         const user = await axios.get(backend + '/v2/profil/', {
@@ -38,6 +40,7 @@ const LoginPage = () => {
         setCookie('user', user.data);
 
         if (user.data.role === 'admin') router.push('/admin/pengungsian');
+        if (user.data.role === 'petugas') router.push('/petugas');
         if (user.data.role === 'warga') router.push('/dashboard');
 
         toast.dismiss();

@@ -24,8 +24,9 @@ const DataPengungsian = ({ pengungsian }) => {
       const kapasitasTempat = e.target.kapasitas_tempat.value;
       const alamat = e.target.alamat.value;
 
-      if(!namaTempat) return toast.warning("Nama tempat tidak boleh kosong")
-      if(!kapasitasTempat) return toast.warning("Kapasitas tempat tidak boleh kosong")
+      if (!namaTempat) return toast.warning('Nama tempat tidak boleh kosong');
+      if (!kapasitasTempat)
+        return toast.warning('Kapasitas tempat tidak boleh kosong');
       if (!alamat) return toast.warning('Alamat tidak boleh kosong');
       if (!success) toast.loading('loading');
 

@@ -131,8 +131,8 @@ const PengungsianWarga = ({ account, pengungsian }) => {
                     <td className='p-5'>{data.alamat}</td>
                     <td className='p-5'>
                       {data.pengungsi
-                        ? data.kapasitas_tempat - data.pengungsi.length
-                        : data.kapasitas_tempat}
+                        ? data.kapasitas_tempat - (data.kapasitas_tempat - data.pengungsi.length)
+                        : 0}
                       /{data.kapasitas_tempat}
                     </td>
                   </tr>
