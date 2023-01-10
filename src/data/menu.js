@@ -1,4 +1,4 @@
-import { FaHome, FaRegUser, FaRegUserCircle } from 'react-icons/fa';
+import { FaHome, FaRegUser, FaRegUserCircle, FaUser } from 'react-icons/fa';
 import { GiCampingTent } from 'react-icons/gi';
 
 export const NavbarMenu = [
@@ -40,5 +40,10 @@ export const SidebarMenuAdmin = [
     url: '/admin/pengungsian',
     menu: 'Pengungsian',
     icon: <GiCampingTent className='stroke-[1.5px] w-6 h-6' />,
+  },
+  {
+    url: '/admin/warga',
+    menu: 'Warga',
+    icon: <FaUser className='stroke-[1.5px] w-6 h-6' />,
   },
 ];
