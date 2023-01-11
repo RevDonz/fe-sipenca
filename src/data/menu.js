@@ -23,11 +23,11 @@ export const SidebarMenuWarga = [
     menu: 'Akun Saya',
     icon: <FaRegUser className={`stroke-2 w-6 h-6`} />,
   },
-  {
-    url: '/dashboard/keluarga',
-    menu: 'Keluarga',
-    icon: <FaRegUserCircle className='stroke-[1.5px] w-6 h-6' />,
-  },
+  // {
+  //   url: '/dashboard/keluarga',
+  //   menu: 'Keluarga',
+  //   icon: <FaRegUserCircle className='stroke-[1.5px] w-6 h-6' />,
+  // },
 ];
 
 export const SidebarMenuAdmin = [
