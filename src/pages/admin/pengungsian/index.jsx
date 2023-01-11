@@ -1,15 +1,17 @@
 import axios from 'axios';
 import { getCookie } from 'cookies-next';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { toast } from 'react-toastify';
-import Layout from '../../components/Layout';
+import Layout from '../../../components/Layout';
 const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const DataPengungsian = ({ pengungsian }) => {
   const { data } = pengungsian;
+
   const [user, setUser] = useState('');
   const [token, setToken] = useState('');
   const [success, setSuccess] = useState(false);
@@ -24,8 +26,9 @@ const DataPengungsian = ({ pengungsian }) => {
       const kapasitasTempat = e.target.kapasitas_tempat.value;
       const alamat = e.target.alamat.value;
 
-      if(!namaTempat) return toast.warning("Nama tempat tidak boleh kosong")
-      if(!kapasitasTempat) return toast.warning("Kapasitas tempat tidak boleh kosong")
+      if (!namaTempat) return toast.warning('Nama tempat tidak boleh kosong');
+      if (!kapasitasTempat)
+        return toast.warning('Kapasitas tempat tidak boleh kosong');
       if (!alamat) return toast.warning('Alamat tidak boleh kosong');
       if (!success) toast.loading('loading');
 
@@ -189,9 +192,14 @@ const DataPengungsian = ({ pengungsian }) => {
   return (
     <Layout title={'Data Pengungsian'} user={user}>
       <Head>
-        <title>Sipenca | Dashboard - Pengungsian</title>
+        <title>Sipenca | Admin - Pengungsian</title>
       </Head>
-      <div className='p-10'>
+      <div className='p-5'>
+        <Link href={'/admin/pengungsian/tambah'}>
+          <button className='px-3 py-2 rounded-md bg-[#254A75] hover:bg-[#1d3b5e] text-white mb-5'>
+            Tambah Pengungsian
+          </button>
+        </Link>
         <DataTable
           className='test-datatable'
           columns={columns}
