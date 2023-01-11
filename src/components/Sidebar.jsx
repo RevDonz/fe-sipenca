@@ -9,7 +9,7 @@ const Sidebar = ({ user }) => {
   const urlName = router.pathname;
 
   const SidebarMenu =
-    user.role === 'admin' || 'petugas' ? SidebarMenuAdmin : SidebarMenuWarga;
+    user.role === 'admin' ? SidebarMenuAdmin : SidebarMenuWarga;
 
   return (
     <div className='bg-white p-5 rounded-lg'>
