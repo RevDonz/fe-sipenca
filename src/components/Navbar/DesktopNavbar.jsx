@@ -48,12 +48,15 @@ const DesktopNavbar = ({ user }) => {
           {urlName == '/dashboard' ||
           urlName == '/admin' ||
           urlName == '/admin/pengungsian' ||
+          urlName == '/admin/pengungsian/tambah' ||
           urlName == '/dashboard/edit-profil' ||
           urlName == '/dashboard/keluarga' ||
           urlName == '/dashboard/profil' ? (
             <div className='relative'>
               {urlName == '/dashboard' ||
               urlName == '/admin' ||
+              urlName == '/admin/pengungsian' ||
+              urlName == '/admin/pengungsian/tambah' ||
               urlName == '/dashboard/keluarga' ||
               urlName == '/dashboard/edit-profil' ||
               urlName == '/dashboard/profil' ? (
